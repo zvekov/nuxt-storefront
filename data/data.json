@@ -1,0 +1,73 @@
+{
+  "footerCategories": [
+    {
+      "name": "Shoes",
+      "link": "/"
+    },
+    {
+      "name": "Clothing",
+      "link": "/"
+    },
+    {
+      "name": "Accessories",
+      "link": "/"
+    }
+  ],
+  "footerCollections": [
+    {
+      "name": "Men",
+      "link": "/"
+    },
+    {
+      "name": "Women",
+      "link": "/"
+    },
+    {
+      "name": "Kids",
+      "link": "/"
+    },
+    {
+      "name": "Unisex",
+      "link": "/"
+    }
+  ],
+  "footerLinks": [
+    {
+      "name": "Brands",
+      "link": "/brands/"
+    },
+    {
+      "name": "Special",
+      "link": "/special/"
+    },
+    {
+      "name": "About us",
+      "link": "/about/"
+    },
+    {
+      "name": "Contacts",
+      "link": "/contacts/"
+    },
+    {
+      "name": "Delivery",
+      "link": "/delivery/"
+    },
+    {
+      "name": "Payments",
+      "link": "/payments/"
+    }
+  ],
+  "settings": {
+    "phone": "+1 (111) 111-22-33",
+    "email": "nuxt@storefront.local"
+  },
+  "social": [
+    { "instagram": "https://instagram.com/" },
+    { "vk": "https://vk.com" },
+    { "pinterest": "https://pinterest.com" },
+    { "youtube": "https://youtube.com" },
+    { "telegram": "https://telegram.org" },
+    { "viber": "+1 (111) 111-22-33" },
+    { "whatsapp": "+1 (111) 111-22-33" }
+  ]
+}

@@ -1,0 +1,6 @@
+body.is-search {
+    @apply overflow-y-hidden;
+    & header {
+        @apply z-50;
+    }
+}

@@ -1,0 +1,6 @@
+.g-image--loading {
+  filter: blur(40px);
+}
+.g-image--loaded {
+  animation: blur 0.3s;
+}

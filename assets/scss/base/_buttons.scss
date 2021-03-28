@@ -1,0 +1,9 @@
+button {
+	@apply cursor-pointer;
+	&:focus {
+		@apply outline-none;
+	}
+}
+.btn-red {
+	@apply text-white;
+}

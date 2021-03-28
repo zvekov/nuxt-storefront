@@ -1,0 +1,23 @@
+code,
+kbd,
+pre,
+samp {
+	color: var(--body-color);
+}
+body {
+	@apply font-body overflow-x-hidden;
+	color: var(--body-color);
+	background-color: var(--bg);
+	text-rendering: optimizeLegibility;
+	& > div {
+		@apply flex flex-col justify-between;
+	}
+}
+.inner {
+	@apply px-2 mx-auto;
+	max-width: 72rem;
+}
+
+main {
+	flex-grow: 1;
+}
