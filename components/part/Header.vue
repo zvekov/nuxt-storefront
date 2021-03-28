@@ -330,14 +330,10 @@ button.search-hidden {
   }
 }
 .search-result {
-  @apply w-full mx-auto left-0 bottom-0 right-0 bg-white fixed border-t flex flex-col overflow-y-scroll h-auto;
+  @apply w-full mx-auto left-0 bottom-0 right-0 bg-white fixed border-t flex flex-col overflow-y-scroll h-auto md:rounded-md md:overflow-y-auto md:h-auto md:shadow-pressDefault md:border-t-0 md:bottom-auto;
   max-width: 72rem;
   top: 4rem;
   border-color: var(--border-color-second);
-  @screen md {
-    @apply rounded-md overflow-y-auto h-auto shadow-pressDefault border-t-0 bottom-auto;
-    max-height: auto;
-  }
   & a {
     @apply border-b border-opacity-10 py-1 cursor-pointer;
     border-color: var(--border-color-second);

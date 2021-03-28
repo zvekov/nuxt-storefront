@@ -1,4 +1,3 @@
-
 <template>
   <nuxt-link
     :to="linkTo"
@@ -11,23 +10,12 @@
 </template>
 
 <script>
-import ArrowBack from "~/assets/svg/ArrowBack.svg?inline";
+import ArrowBack from '~/assets/icons/arrow-left.svg?inline'
 export default {
-  name: "LinkBack",
-  props: ["linkTo", "linkName"],
+  name: 'LinkBack',
+  props: ['linkTo', 'linkName'],
   components: {
     ArrowBack,
   },
-};
-</script>
-
-<style lang="postcss">
-.link-back {
-  @apply top-0 w-full h-full px-3 pb-4;
-  @screen md {
-    @apply -mt-16 pt-16;
-  }
-  @screeb lg {
-    @apply w-3/12 sticky;
-  }
 }
+</script>

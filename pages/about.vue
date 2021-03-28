@@ -67,8 +67,8 @@
 // }
 </script>
 <script>
-// import page from '@/mixins/seo/page.js'
-// export default {
-//   mixins: [page],
-// }
+import pageSeo from '@/mixins/seo/page.js'
+export default {
+  mixins: [pageSeo],
+}
 </script>

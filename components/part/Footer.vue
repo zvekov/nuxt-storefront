@@ -1,5 +1,5 @@
 <template>
-  <footer class="py-8 mt-8">
+  <footer>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 inner">
       <widget-footer-nav
         :title="'Categories'"
@@ -36,12 +36,13 @@
 <script>
 // import VueMarkdown from "vue-markdown";
 import data from '@/data/data.json'
+import settings from '@/data/settings.json'
 export default {
   components: {
     //     VueMarkdown,
   },
   data() {
-    return { data: data }
+    return { data: data, settings: settings }
   },
   computed: {
     footerCategories() {
@@ -55,12 +56,12 @@ export default {
     },
     phone() {
       return `${
-        this.data.settings.phone || this.$static.settings.edges[0].node.phone
+        this.settings.phone || this.$static.settings.edges[0].node.phone
       }`
     },
     email() {
       return `${
-        this.data.settings.email || this.$static.settings.edges[0].node.email
+        this.settings.email || this.$static.settings.edges[0].node.email
       }`
     },
     copyright() {
@@ -74,7 +75,7 @@ export default {
 </script>
 <style lang="postcss">
 footer {
-  background-color: var(--bg-third);
+  @apply py-8 mt-8 bg-gray-100 dark:bg-black dark:bg-opacity-90 dark:text-white;
   & a {
     &:hover {
       @apply transition-colors duration-200;

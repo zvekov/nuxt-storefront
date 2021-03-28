@@ -8,37 +8,43 @@ export default {
   //       }`
   //     },
   //   },
-  head() {
-    return {
-      //   title: this.metaTitle,
-      meta: [
-        {
-          name: 'description',
-          content: this.metaDescription,
-        },
-        {
-          property: 'og:title',
-          content: this.metaTitle,
-        },
-        {
-          property: 'og:description',
-          content: this.metaDescription,
-        },
-        {
-          property: 'og:image',
-          content: this.metaImage,
-        },
-        {
-          property: 'og:type',
-          content: 'website',
-        },
-      ],
-      //   script: [
-      //     {
-      //       innerHTML: JSON.stringify(this.jsonld),
-      //       type: 'application/ld+json',
-      //     },
-      //   ],
-    }
+  head: {
+    // htmlAttrs: {
+    //   prefix:
+    //     'og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# product: http://ogp.me/ns/product#',
+    // },
+    title: 'Home page',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        name: 'description',
+        content: 'this',
+      },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        property: 'og:title',
+        content: 'titlte',
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        property: 'og:description',
+        content: 'desc',
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        property: 'og:image',
+        content: '333',
+      },
+      {
+        hid: 'og:type',
+        name: 'og:type',
+        property: 'og:type',
+        content: 'product',
+      },
+    ],
   },
 }

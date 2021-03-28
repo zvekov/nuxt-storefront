@@ -1,6 +1,5 @@
 export default {
   target: 'server',
-
   head: {
     title: 'storefront-nuxt',
     meta: [
@@ -23,6 +22,7 @@ export default {
 
   buildModules: [
     '@nuxtjs/color-mode',
+    '@nuxt/image',
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
     'nuxt-font-loader',
@@ -31,6 +31,14 @@ export default {
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa', '@nuxtjs/svg'],
 
   axios: {},
+  tailwindcss: {
+    jit: true,
+    exposeConfig: true,
+  },
+  colorMode: {
+    classSuffix: '',
+  },
+  image: {},
   fontLoader: {
     url:
       'https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap',
@@ -55,4 +63,15 @@ export default {
       commons: true,
     },
   },
+  // Global settings for app
+  // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-global-name
+  // globalName: 'app',
+  // globals: {
+  //   id: (globalName) => `__${globalName}`,
+  //   nuxt: (globalName) => `$${globalName}`,
+  //   context: (globalName) => `__${globalName.toUpperCase()}__`,
+  //   pluginPrefix: (globalName) => globalName,
+  //   readyCallback: (globalName) => `on${_.capitalize(globalName)}Ready`,
+  //   loadedCallback: (globalName) => `_on${_.capitalize(globalName)}Loaded`,
+  // },
 }
