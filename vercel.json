@@ -13,10 +13,8 @@
         "serverFiles": [
           "middleware/**",
           "plugins/**",
-          "lib/**",
           "package.json",
-          "static/**",
-          "models/**"
+          "static/**"
         ],
         "tscOptions": {
           "sourceMap": false

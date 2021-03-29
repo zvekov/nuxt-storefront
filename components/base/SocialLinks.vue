@@ -66,14 +66,20 @@
   </ul>
 </template>
 <script>
-import InstagramIcon from "~/assets/svg/InstagramIcon.svg?inline";
-import TelegramIcon from "~/assets/svg/TelegramIcon.svg?inline";
-import VkIcon from "~/assets/svg/VkIcon.svg?inline";
-import PinterestIcon from "~/assets/svg/PinterestIcon.svg?inline";
-import YoutubeIcon from "~/assets/svg/YoutubeIcon.svg?inline";
-import WhatsappIcon from "~/assets/svg/WhatsappIcon.svg?inline";
+import InstagramIcon from '~/assets/svg/InstagramIcon.svg?inline'
+import TelegramIcon from '~/assets/svg/TelegramIcon.svg?inline'
+import VkIcon from '~/assets/svg/VkIcon.svg?inline'
+import PinterestIcon from '~/assets/svg/PinterestIcon.svg?inline'
+import YoutubeIcon from '~/assets/svg/YoutubeIcon.svg?inline'
+import WhatsappIcon from '~/assets/svg/WhatsappIcon.svg?inline'
 
+import social from '~/data/social.json'
 export default {
+  data() {
+    return {
+      social: social,
+    }
+  },
   components: {
     InstagramIcon,
     TelegramIcon,
@@ -85,34 +91,36 @@ export default {
   computed: {
     // In production, change "/" to null
     instagramLink() {
-      return this.$static ? this.$static.social.edges[0].node.instagram : "/";
+      return this.social ? this.social.instagram : null
     },
     vkLink() {
-      return this.$static ? this.$static.social.edges[0].node.vk : "/";
+      return this.social ? this.social.vk : null
     },
     pinterestLink() {
-      return this.$static ? this.$static.social.edges[0].node.pinterest : "/";
+      return this.social ? this.social.pinterest : null
     },
     youtubeLink() {
-      return this.$static ? this.$static.social.edges[0].node.youtube : "/";
+      return this.social ? this.social.youtube : null
     },
     telegramLink() {
-      return this.$static ? this.$static.social.edges[0].node.telegram : "/";
+      return this.social ? this.social.telegram : null
     },
     facebookLink() {
-      return this.$static ? this.$static.social.edges[0].node.facebook : "/";
+      return this.social ? this.social.facebook : null
     },
     whatsappNumber() {
-      return this.$static ? this.$static.social.edges[0].node.whatsapp.replace(
-        /[^0-9\.]+/g,
-        ""
-      ) : "/";
+      return this.social ? this.social.whatsapp.replace(/[^0-9\.]+/g, '') : null
     },
     viberNumber() {
-      return this.$static ? this.$static.social.edges[0].node.viber.replace(/\s|\-/g, "") : "/";
+      return this.social
+        ? this.social.viber.replace(
+            /[`~!@#$%^&*()_|\-=?;:'",.<>\{\}\[\]\\\/, " "]/g,
+            ''
+          )
+        : null
     },
   },
-};
+}
 </script>
 <style lang="postcss">
 ul.social {
