@@ -28,8 +28,17 @@
   </div>
 </template>
 <script>
-// import page from '@/mixins/seo/page.js'
+// import pageSeo from '@/mixins/seo/page.js'
 // export default {
-//   mixins: [page],
+//   mixins: [pageSeo],
 // }
 </script>
+<style lang="postcss">
+.visually-hidden {
+  @apply absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+</style>

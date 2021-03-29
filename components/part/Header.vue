@@ -14,7 +14,7 @@
       </div>
       <div class="w-8/12 md:w-6/12 flex flex-col" v-if="!isSearchShow">
         <base-logo
-          class="base-logo w-40 mt-1 md:mt-0 xxs:w-48 mx-auto md:w-56 md:mx-auto"
+          class="base-logo px-2 md:px-0 md:mt-0 w-full mx-auto md:w-56 md:mx-auto"
         />
       </div>
       <div class="w-2/12 md:w-3/12 px-3 flex justify-end z-50">
@@ -128,20 +128,11 @@
       :zIndex="40"
       class="hidden md:block"
       style="height: 40px"
-    >
-      <nav
-        class="nav shadow-pressDefault py-2 bg-white flex justify-center z-0"
-      >
-        <g-link class="px-5" to="/catalog/" title="Каталог">Каталог</g-link>
-        <g-link class="px-5" to="/collections/" title="Коллекции"
-          >Коллекции</g-link
-        >
-        <g-link class="px-5" to="/services/" title="Услуги">Услуги</g-link>
-        <g-link class="px-5" to="/works/" title="Работы">Работы</g-link>
-        <g-link class="px-5" to="/about/" title="О нас">О нас</g-link>
-        <g-link class="px-5" to="/contacts/" title="Контакты">Контакты</g-link>
-      </nav>
-    </headroom> -->
+    > -->
+    <part-nav
+      class="hidden shadow-pressDefault py-2 bg-white md:flex justify-center z-0"
+    />
+    <!-- </headroom> -->
   </header>
 </template>
 
