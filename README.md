@@ -1,4 +1,4 @@
-# storefront-nuxt
+# Nuxt Storefront
 
 ## Build Setup
 
@@ -18,3 +18,5 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+### Demo: [nuxt-storefront.vercel.app](https://nuxt-storefront.vercel.app)
