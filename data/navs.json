@@ -1,60 +1,69 @@
 {
-  "footerCategories": [
-    {
-      "name": "Shoes",
-      "link": "/"
-    },
-    {
-      "name": "Clothing",
-      "link": "/"
-    },
-    {
-      "name": "Accessories",
-      "link": "/"
-    }
-  ],
-  "footerCollections": [
-    {
-      "name": "Men",
-      "link": "/"
-    },
-    {
-      "name": "Women",
-      "link": "/"
-    },
-    {
-      "name": "Kids",
-      "link": "/"
-    },
-    {
-      "name": "Unisex",
-      "link": "/"
-    }
-  ],
-  "footerLinks": [
-    {
-      "name": "Brands",
-      "link": "/brands/"
-    },
-    {
-      "name": "Special",
-      "link": "/special/"
-    },
-    {
-      "name": "About us",
-      "link": "/about/"
-    },
-    {
-      "name": "Contacts",
-      "link": "/contacts/"
-    },
-    {
-      "name": "Delivery",
-      "link": "/delivery/"
-    },
-    {
-      "name": "Payments",
-      "link": "/payments/"
-    }
-  ]
+  "footerCategories": {
+    "title": "Categories",
+    "items": [
+      {
+        "name": "Shoes",
+        "link": "/"
+      },
+      {
+        "name": "Clothing",
+        "link": "/"
+      },
+      {
+        "name": "Accessories",
+        "link": "/"
+      }
+    ]
+  },
+  "footerCollections": {
+    "title": "Collections",
+    "items": [
+      {
+        "name": "Men",
+        "link": "/"
+      },
+      {
+        "name": "Women",
+        "link": "/"
+      },
+      {
+        "name": "Kids",
+        "link": "/"
+      },
+      {
+        "name": "Unisex",
+        "link": "/"
+      }
+    ]
+  },
+  "footerLinks": {
+    "title": "Information",
+    "items": [
+      {
+        "name": "Brands",
+        "link": "/brands/"
+      },
+      {
+        "name": "Special",
+        "link": "/special/"
+      },
+      {
+        "name": "About us",
+        "link": "/about/"
+      },
+      {
+        "name": "Contacts",
+        "link": "/contacts/"
+      },
+      {
+        "name": "Delivery",
+        "link": "/delivery/"
+      },
+      {
+        "name": "Payments",
+        "link": "/payments/"
+      }
+    ]
+  }
 }

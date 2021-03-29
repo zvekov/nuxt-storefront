@@ -1,5 +1,5 @@
 <template>
-  <ul class="social grid grid-flow-col auto-cols-max gap-3">
+  <ul class="social grid grid-flow-col auto-cols-max items-center gap-3">
     <li v-if="instagramLink != null">
       <a
         :href="instagramLink"

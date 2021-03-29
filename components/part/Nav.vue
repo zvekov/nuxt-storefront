@@ -1,12 +1,12 @@
 <template>
   <nav class="nav">
-    <nuxt-link class="px-5" to="/" title="Каталог">Каталог</nuxt-link>
-    <nuxt-link class="px-5" to="/" title="Коллекции">Коллекции</nuxt-link>
-    <nuxt-link class="px-5" to="/" title="Услуги">Услуги</nuxt-link>
-    <nuxt-link class="px-5" to="/" title="Работы">Работы</nuxt-link>
-    <nuxt-link class="px-5" to="/about/" title="О нас">О нас</nuxt-link>
+    <nuxt-link class="px-5" to="/" title="Каталог">Catalog</nuxt-link>
+    <nuxt-link class="px-5" to="/" title="Коллекции">Collections</nuxt-link>
+    <nuxt-link class="px-5" to="/" title="Услуги">Services</nuxt-link>
+    <nuxt-link class="px-5" to="/" title="Работы">Works</nuxt-link>
+    <nuxt-link class="px-5" to="/about/" title="О нас">About us</nuxt-link>
     <nuxt-link class="px-5" to="/contacts/" title="Контакты"
-      >Контакты</nuxt-link
+      >Contacts</nuxt-link
     >
   </nav>
 </template>

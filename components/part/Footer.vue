@@ -2,17 +2,14 @@
   <footer>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 inner">
       <widget-footer-nav
-        :title="'Categories'"
         :nav="footerCategories"
         class="flex flex-col items-start p-3"
       />
       <widget-footer-nav
-        :title="'Collections'"
         :nav="footerCollections"
         class="flex flex-col items-start p-3"
       />
       <widget-footer-nav
-        :title="'Information'"
         :nav="footerLinks"
         class="flex flex-col items-start p-3"
       />
