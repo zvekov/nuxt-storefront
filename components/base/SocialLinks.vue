@@ -73,7 +73,7 @@ import PinterestIcon from '~/assets/svg/PinterestIcon.svg?inline'
 import YoutubeIcon from '~/assets/svg/YoutubeIcon.svg?inline'
 import WhatsappIcon from '~/assets/svg/WhatsappIcon.svg?inline'
 
-import social from '~/data/social.json'
+import social from '~/data/socials.json'
 export default {
   data() {
     return {
@@ -89,7 +89,6 @@ export default {
     WhatsappIcon,
   },
   computed: {
-    // In production, change "/" to null
     instagramLink() {
       return this.social ? this.social.instagram : null
     },

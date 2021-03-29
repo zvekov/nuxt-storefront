@@ -35,24 +35,24 @@
 
 <script>
 // import VueMarkdown from "vue-markdown";
-import data from '@/data/data.json'
+import nav from '@/data/navs.json'
 import settings from '@/data/settings.json'
 export default {
   components: {
     //     VueMarkdown,
   },
   data() {
-    return { data: data, settings: settings }
+    return { nav: nav, settings: settings }
   },
   computed: {
     footerCategories() {
-      return this.data.footerCategories
+      return this.nav.footerCategories
     },
     footerCollections() {
-      return this.data.footerCollections
+      return this.nav.footerCollections
     },
     footerLinks() {
-      return this.data.footerLinks
+      return this.nav.footerLinks
     },
     phone() {
       return `${

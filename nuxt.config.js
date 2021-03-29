@@ -1,3 +1,5 @@
+// const isDev = process.env.NODE_ENV !== 'production'
+
 export default {
   target: 'server',
   head: {
@@ -58,10 +60,46 @@ export default {
     quiet: false,
     analyze: false, // Анализ размеров пакетов в бандлах
     splitChunks: {
-      layouts: true,
-      pages: true,
+      pages: false,
+      vendor: true,
       commons: true,
+      runtime: true,
+      layouts: true,
+      // cacheGroups: {
+      //   styles: {
+      //     name: 'styles',
+      //     test: /\.(css|vue)$/,
+      //     chunks: 'all',
+      //     enforce: true,
+      //   },
+      // },
     },
+    filenames: {
+      chunk: ({ isDev }) => (isDev ? '[name].js' : 'bundle.[contenthash].js'),
+      app: ({ isDev }) => (isDev ? '[name].js' : 'bundle.[contenthash].js'),
+      css: ({ isDev }) => (isDev ? '[name].css' : 'bundle.[contenthash].css'),
+    },
+    // Add render rules
+    // render: {
+    //   bundleRenderer: {
+    //     shouldPrefetch: (file, type) =>
+    //       ['script', 'style', 'font'].includes(type) && !file.includes('admin'),
+    //   },
+    //   http2: {
+    //     push: true,
+    //     pushAssets: (req, res, publicPath, preloadFiles) =>
+    //       preloadFiles.map(
+    //         (f) => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`
+    //       ),
+    //   },
+    //   compressor: false,
+    //   resourceHints: false,
+    //   etag: true,
+    //   static: {
+    //     etag: true,
+    //   },
+    // },
+    // crawler: false,
   },
   // Global settings for app
   // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-global-name
