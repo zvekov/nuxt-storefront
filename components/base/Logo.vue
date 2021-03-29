@@ -1,7 +1,7 @@
 <template>
   <nuxt-link class="base-logo" to="/" :title="siteName">
     <!-- <VueMarkdown v-if="svgLogo" :source="svgLogo" /> -->
-    <Logo v-if="!svgLogo" class="h-10" />
+    <logo v-if="!svgLogo" class="h-10" />
   </nuxt-link>
 </template>
 <script>
