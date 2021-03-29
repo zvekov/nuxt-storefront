@@ -1,4 +1,4 @@
-# storefront-nuxt
+# Nuxt Storefront
 
 ## Build Setup
 
