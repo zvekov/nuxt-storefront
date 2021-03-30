@@ -30,9 +30,13 @@ export default {
     'nuxt-font-loader',
   ],
 
-  modules: ['@nuxtjs/axios', '@nuxtjs/pwa', '@nuxtjs/svg'],
+  modules: ['@nuxtjs/strapi', '@nuxtjs/axios', '@nuxtjs/pwa', '@nuxtjs/svg'],
 
   axios: {},
+  strapi: {
+    entities: ['products', 'brands', 'categories'],
+    key: 'userJwt',
+  },
   tailwindcss: {
     jit: true,
     exposeConfig: true,

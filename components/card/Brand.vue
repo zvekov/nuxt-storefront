@@ -1,6 +1,6 @@
 <template>
   <nuxt-link to="/" :title="brand.name">
-    <span class="w-full" v-html="brand.icon" />
+    <span v-if="brand.iconSvg" class="w-full" v-html="brand.iconSvg" />
   </nuxt-link>
 </template>
 <script>

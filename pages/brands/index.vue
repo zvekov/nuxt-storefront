@@ -8,10 +8,14 @@
         {{ pageTitle }}
       </h1>
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div v-if="error">
+          {{ error }}
+        </div>
         <card-brand
           v-for="brand in brands"
           :key="brand.id"
           :brand="brand"
+          :error="error"
           class="flex justify-center items-center w-auto p-4 h-40 rounded-lg shadow-pressDefault hover:shadow-pressHover transform hover:translate-y-1 m-2 lg:m-3 transition-dark duration-300"
         />
       </div>
@@ -19,13 +23,19 @@
   </div>
 </template>
 <script>
-import brands from '@/data/brands.json'
 import pageSeo from '~/mixins/seo/page'
 
 export default {
   mixins: [pageSeo],
   data() {
-    return { brands: brands }
+    return { brands: [], error: null }
+  },
+  async mounted() {
+    try {
+      this.brands = await this.$strapi.$brands.find()
+    } catch (error) {
+      this.error = error
+    }
   },
   computed: {
     pageName() {
