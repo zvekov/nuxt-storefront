@@ -150,7 +150,6 @@ export default {
   components: {
     //     Burger,
     //     headroom,
-    //     ToggleTheme,
     SearchIcon,
     //     ProductMeasure,
     //     ClickOutside,
