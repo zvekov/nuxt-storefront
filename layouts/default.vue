@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen flex flex-col">
     <part-header />
-    <Nuxt class="pt-4" />
+    <Nuxt class="pt-4 flex-1" />
     <part-footer />
   </div>
 </template>
