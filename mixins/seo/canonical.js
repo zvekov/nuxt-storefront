@@ -4,9 +4,9 @@ export default {
       let canonical
 
       if (this.$route.path === '/') {
-        canonical = process.env.APP_URL
+        canonical = this.$config.appUrl
       } else {
-        canonical = process.env.APP_URL + this.$route.path
+        canonical = this.$config.appUrl + this.$route.path
       }
       return canonical
     },

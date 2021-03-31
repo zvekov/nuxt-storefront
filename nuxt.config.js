@@ -1,7 +1,15 @@
-// const isDev = process.env.NODE_ENV !== 'production'
+const apiUrl = process.env.API_URL || 'http://localhost:1337'
+const appUrl = process.env.APP_URL || 'http://localhost:3000'
 
 export default {
   target: 'server',
+  telemetry: false,
+  publicRuntimeConfig: {
+    appUrl: process.env.APP_URL || 'http://localhost:3000',
+  },
+  privateRuntimeConfig: {
+    apiUrl: process.env.API_URL || 'http://localhost:1337',
+  },
   head: {
     title: 'storefront-nuxt',
     meta: [
@@ -34,6 +42,7 @@ export default {
 
   axios: {},
   strapi: {
+    url: apiUrl,
     entities: ['products', 'brands', 'categories'],
     key: 'userJwt',
   },

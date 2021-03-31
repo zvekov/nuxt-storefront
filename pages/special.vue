@@ -7,7 +7,9 @@
     </div>
     <div class="px-3 grid md:grid-cols-2">
       <div class="pb-12 md:pb-24">
-        <!-- <h1 class="pb-3 text-2xl font-bold leading-snug">{{ pageTitle }}</h1> -->
+        <h1 class="pb-3 text-2xl font-bold leading-snug">
+          {{ 'Special products' }}
+        </h1>
       </div>
     </div>
   </div>
