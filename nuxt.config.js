@@ -43,7 +43,11 @@ export default {
   axios: {},
   strapi: {
     url: apiUrl,
-    entities: ['products', 'brands', 'categories'],
+    entities: [
+      { name: 'products', type: 'collection' },
+      { name: 'brands', type: 'collection' },
+      { name: 'categories', type: 'collection' },
+    ],
     key: 'userJwt',
   },
   tailwindcss: {

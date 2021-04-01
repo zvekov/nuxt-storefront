@@ -4,7 +4,7 @@
       <base-link-back :linkTo="'/brands/'" :linkName="'Brands'" />
     </div>
     <div class="pb-12">
-      <h1 class="pb-3 px-3 text-2xl font-bold leading-snug">
+      <h1 v-if="brand" class="pb-3 px-3 text-2xl font-bold leading-snug">
         {{ brand.name }}
       </h1>
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -17,29 +17,24 @@
         />
       </div>
     </div>
+    <!-- Create custom component -->
+    <div v-if="brand.products" class="brand__products">
+      <div v-for="product in brand.products" :key="product.id">
+        {{ product.name }}
+      </div>
+    </div>
+    <!-- Create custom component -->
   </div>
 </template>
 <script>
 export default {
-  async asyncData({ $strapi, params }) {
-    const oneBrand = await $strapi.find('brands', {
-      slug: params.slug,
-    })
+  data() {
     return {
-      brand: oneBrand[0],
+      brand: {},
     }
   },
-  // data() {
-  //   return {
-  //     brand: {},
-  //   }
-  // },
-  // async mounted() {
-  //   try {
-  //     this.brand = await this.$strapi.$brands.findOne(this.$route.params.slug)
-  //   } catch (error) {
-  //     this.error = error
-  //   }
-  // },
+  async fetch() {
+    this.brand = await this.$strapi.findOne('brands', this.$route.params.id)
+  },
 }
 </script>
