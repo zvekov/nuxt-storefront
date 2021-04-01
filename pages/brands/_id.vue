@@ -34,7 +34,7 @@ export default {
     }
   },
   async fetch() {
-    this.brand = await this.$strapi.findOne('brands', this.$route.params.id)
+    this.brand = await this.$strapi.$brands.findOne(this.$route.params.id)
   },
 }
 </script>
