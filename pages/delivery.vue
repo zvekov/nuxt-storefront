@@ -17,52 +17,52 @@
 <script>
 // import PageMeta from "~/mixins/meta/PageMeta";
 
-export default {
-  // mixins: [PageMeta],
-  // computed: {
-  //   pageName() {
-  //     return `${this.$page.page.edges[0].node.name || "О нас"}`;
-  //   },
-  //   pageTitle() {
-  //     return `${this.$page.page.edges[0].node.pageTitle || "О нас"}`;
-  //   },
-  //   metaTitle() {
-  //     return `${this.$page.page.edges[0].node.metaTitle || "О нас"}`;
-  //   },
-  //   metaDescription() {
-  //     return `${
-  //       this.$page.page.edges[0].node.metaDescription ||
-  //       "Описание страницы о нас."
-  //     }`;
-  //   },
-  // },
-  data() {
-    return {
-      jsonld: [
-        {
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
-              item: {
-                '@id': process.env.APP_URL,
-                name: 'Главная',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 2,
-              item: {
-                '@id': this.canonical,
-                name: this.pageName,
-              },
-            },
-          ],
-        },
-      ],
-    }
-  },
-}
+// export default {
+// mixins: [PageMeta],
+// computed: {
+//   pageName() {
+//     return `${this.$page.page.edges[0].node.name || "О нас"}`;
+//   },
+//   pageTitle() {
+//     return `${this.$page.page.edges[0].node.pageTitle || "О нас"}`;
+//   },
+//   metaTitle() {
+//     return `${this.$page.page.edges[0].node.metaTitle || "О нас"}`;
+//   },
+//   metaDescription() {
+//     return `${
+//       this.$page.page.edges[0].node.metaDescription ||
+//       "Описание страницы о нас."
+//     }`;
+//   },
+// },
+// data() {
+//   return {
+//     jsonld: [
+//       {
+//         '@context': 'https://schema.org',
+//         '@type': 'BreadcrumbList',
+//         itemListElement: [
+//           {
+//             '@type': 'ListItem',
+//             position: 1,
+//             item: {
+//               '@id': process.env.APP_URL,
+//               name: 'Главная',
+//             },
+//           },
+//           {
+//             '@type': 'ListItem',
+//             position: 2,
+//             item: {
+//               '@id': this.canonical,
+//               name: this.pageName,
+//             },
+//           },
+//         ],
+//       },
+//     ],
+//   }
+// },
+// }
 </script>

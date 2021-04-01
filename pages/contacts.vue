@@ -36,33 +36,33 @@ export default {
   //     }`;
   //   },
   // },
-  data() {
-    return {
-      jsonld: [
-        {
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
-              item: {
-                '@id': process.env.APP_URL,
-                name: 'Главная',
-              },
-            },
-            {
-              '@type': 'ListItem',
-              position: 2,
-              item: {
-                '@id': this.canonical,
-                name: this.pageName,
-              },
-            },
-          ],
-        },
-      ],
-    }
-  },
+  // data() {
+  //   return {
+  //     jsonld: [
+  //       {
+  //         '@context': 'https://schema.org',
+  //         '@type': 'BreadcrumbList',
+  //         itemListElement: [
+  //           {
+  //             '@type': 'ListItem',
+  //             position: 1,
+  //             item: {
+  //               '@id': process.env.APP_URL,
+  //               name: 'Главная',
+  //             },
+  //           },
+  //           {
+  //             '@type': 'ListItem',
+  //             position: 2,
+  //             item: {
+  //               '@id': this.canonical,
+  //               name: this.pageName,
+  //             },
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   }
+  // },
 }
 </script>

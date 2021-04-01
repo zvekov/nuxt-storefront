@@ -5,7 +5,7 @@
     </div>
     <div class="pb-12">
       <h1 v-if="brand" class="pb-3 px-3 text-2xl font-bold leading-snug">
-        {{ brand.name }}
+        {{ h1 }}
       </h1>
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
         <span v-if="brand.iconSvg" class="w-full" v-html="brand.iconSvg" />
@@ -27,7 +27,9 @@
   </div>
 </template>
 <script>
+import seo from '~/mixins/seo/page'
 export default {
+  mixins: [seo],
   data() {
     return {
       brand: {},
@@ -35,6 +37,17 @@ export default {
   },
   async fetch() {
     this.brand = await this.$strapi.$brands.findOne(this.$route.params.id)
+  },
+  computed: {
+    h1() {
+      return (this.brand.seo && this.brand.seo.h1) || this.brand.name
+    },
+    metaTitle() {
+      return (this.brand.seo && this.brand.seo.title) || this.brand.name
+    },
+    metaDescription() {
+      return (this.brand.seo && this.brand.seo.description) || this.brand.name
+    },
   },
 }
 </script>

@@ -8,7 +8,7 @@
     <div class="px-3 grid md:grid-cols-2">
       <div class="pb-12 md:pb-24">
         <h1 class="pb-3 text-2xl font-bold leading-snug">
-          {{ pageTitle || 'Catalog' }}
+          {{ 'Catalog' }}
         </h1>
       </div>
     </div>
@@ -67,8 +67,8 @@
 // }
 </script>
 <script>
-import pageSeo from '@/mixins/seo/page.js'
-export default {
-  mixins: [pageSeo],
-}
+// import pageSeo from '@/mixins/seo/page.js'
+// export default {
+//   mixins: [pageSeo],
+// }
 </script>

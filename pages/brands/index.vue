@@ -9,8 +9,8 @@
         class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 lg:gap-6 px-3"
       >
         <card-brand
-          v-for="brand in brands"
-          :key="brand.id"
+          v-for="(brand, key) in brands"
+          :key="key"
           :brand="brand"
           class="flex justify-center items-center w-auto p-4 h-40 rounded-lg shadow-pressDefault hover:shadow-pressHover transform hover:translate-y-1 transition-dark duration-300"
         />
@@ -19,10 +19,10 @@
   </div>
 </template>
 <script>
-import pageSeo from '~/mixins/seo/page'
+// import pageSeo from '~/mixins/seo/page'
 
 export default {
-  mixins: [pageSeo],
+  // mixins: [pageSeo],
   // data() {
   //   return { brands: [], error: null }
   // },
