@@ -249,8 +249,8 @@ body {
   }
 }
 header {
+  @apply bg-opacity-90 bg-white dark:bg-black dark:text-gray-100;
   border-color: var(--border-color-second);
-  background-color: var(--bg);
 }
 body[data-theme='dark'] {
   & .nav {

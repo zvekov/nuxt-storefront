@@ -72,7 +72,7 @@ export default {
 </script>
 <style lang="postcss">
 footer {
-  @apply py-8 mt-8 bg-gray-100 dark:bg-black dark:bg-opacity-90 dark:text-white;
+  @apply py-8 mt-8 bg-gray-100 dark:bg-black dark:bg-opacity-90 dark:text-gray-100;
   & a {
     &:hover {
       @apply transition-colors duration-200;
