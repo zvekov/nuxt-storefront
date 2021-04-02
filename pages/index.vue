@@ -17,6 +17,18 @@
           :currentPage="index"
         /> -->
       </div>
+      <!-- Create custom component -->
+      <div
+        v-if="products"
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6 inner"
+      >
+        <card-product
+          v-for="product in products"
+          :key="product.id"
+          :product="product"
+        />
+      </div>
+      <!-- Create custom component -->
       <div class="flex justify-center">
         <nuxt-link
           to="/special/"
@@ -28,10 +40,17 @@
   </div>
 </template>
 <script>
-// import pageSeo from '@/mixins/seo/page.js'
-// export default {
-//   mixins: [pageSeo],
-// }
+export default {
+  data() {
+    return {
+      products: [],
+    }
+  },
+  async fetch() {
+    this.products = await this.$strapi.$products.find({ _limit: 4 })
+  },
+  fetchOnServer: false,
+}
 </script>
 <style lang="postcss">
 .visually-hidden {

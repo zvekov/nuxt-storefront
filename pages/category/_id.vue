@@ -11,8 +11,19 @@
       <h1 v-if="category" class="pb-3 px-3 text-2xl font-bold leading-snug">
         {{ h1 }}
       </h1>
-      <!-- Create custom component -->
     </div>
+    <!-- Create custom component -->
+    <div
+      v-if="category.products"
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
+    >
+      <card-product
+        v-for="product in category.products"
+        :key="product.id"
+        :product="product"
+      />
+    </div>
+    <!-- Create custom component -->
   </div>
 </template>
 <script>
@@ -53,7 +64,7 @@ export default {
     },
     linkBackUrl() {
       return this.category.topCategory
-        ? '/c/' + this.category.topCategory.id
+        ? '/category/' + this.category.topCategory.id
         : '/catalog/'
     },
   },

@@ -19,7 +19,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     bodyAttrs: {
       class: [
-        'font-sans font-medium bg-light-surface dark:bg-dark-surface text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear',
+        'font-sans font-medium dark:bg-black dark:bg-opacity-90 dark:text-gray-100 transition-colors duration-300 ease-linear',
       ],
     },
   },

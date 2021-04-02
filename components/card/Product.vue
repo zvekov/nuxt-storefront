@@ -17,7 +17,7 @@
     <div class="p-4">
       <div class="font-bold">{{ product.name }}</div>
       <div class="opacity-50 text-xs">
-        {{ productCategory.name }}
+        {{ productCategory.name || product.baseCategory.name }}
       </div>
       <!-- <div class="flex flex-col items-start md:flex-row md:items-center pt-2">
         <ProductPrice :product="product" />
@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     productUrl() {
-      return '/p/' + this.product.id + '/'
+      return '/product/' + this.product.id
     },
   },
 }

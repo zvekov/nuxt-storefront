@@ -12,63 +12,78 @@
         </h1>
       </div>
     </div>
+    <!-- Create custom component -->
+    <div
+      v-if="products"
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
+    >
+      <card-product
+        v-for="product in products"
+        :key="product.id"
+        :product="product"
+      />
+    </div>
+    <!-- Create custom component -->
   </div>
 </template>
 <script>
 // import PageMeta from "~/mixins/meta/PageMeta";
 
-// export default {
-// mixins: [PageMeta],
-// computed: {
-//   pageName() {
-//     return `${this.$page.page.edges[0].node.name || "О нас"}`;
-//   },
-//   pageTitle() {
-//     return `${this.$page.page.edges[0].node.pageTitle || "О нас"}`;
-//   },
-//   metaTitle() {
-//     return `${this.$page.page.edges[0].node.metaTitle || "О нас"}`;
-//   },
-//   metaDescription() {
-//     return `${
-//       this.$page.page.edges[0].node.metaDescription ||
-//       "Описание страницы о нас."
-//     }`;
-//   },
-// },
-//   data() {
-//     return {
-//       jsonld: [
-//         {
-//           '@context': 'https://schema.org',
-//           '@type': 'BreadcrumbList',
-//           itemListElement: [
-//             {
-//               '@type': 'ListItem',
-//               position: 1,
-//               item: {
-//                 '@id': process.env.APP_URL,
-//                 name: 'Главная',
-//               },
-//             },
-//             {
-//               '@type': 'ListItem',
-//               position: 2,
-//               item: {
-//                 '@id': this.canonical,
-//                 name: this.pageName,
-//               },
-//             },
-//           ],
-//         },
-//       ],
-//     }
-//   },
-// }
-</script>
-<script>
-// import pageSeo from '@/mixins/seo/page.js'
-// export default {
-//   mixins: [pageSeo],
-// }
+export default {
+  data() {
+    return {
+      products: [],
+    }
+  },
+  async fetch() {
+    this.products = await this.$strapi.$products.find()
+  },
+  fetchOnServer: false,
+  // mixins: [PageMeta],
+  // computed: {
+  //   pageName() {
+  //     return `${this.$page.page.edges[0].node.name || "О нас"}`;
+  //   },
+  //   pageTitle() {
+  //     return `${this.$page.page.edges[0].node.pageTitle || "О нас"}`;
+  //   },
+  //   metaTitle() {
+  //     return `${this.$page.page.edges[0].node.metaTitle || "О нас"}`;
+  //   },
+  //   metaDescription() {
+  //     return `${
+  //       this.$page.page.edges[0].node.metaDescription ||
+  //       "Описание страницы о нас."
+  //     }`;
+  //   },
+  // },
+  //   data() {
+  //     return {
+  //       jsonld: [
+  //         {
+  //           '@context': 'https://schema.org',
+  //           '@type': 'BreadcrumbList',
+  //           itemListElement: [
+  //             {
+  //               '@type': 'ListItem',
+  //               position: 1,
+  //               item: {
+  //                 '@id': process.env.APP_URL,
+  //                 name: 'Главная',
+  //               },
+  //             },
+  //             {
+  //               '@type': 'ListItem',
+  //               position: 2,
+  //               item: {
+  //                 '@id': this.canonical,
+  //                 name: this.pageName,
+  //               },
+  //             },
+  //           ],
+  //         },
+  //       ],
+  //     }
+  //   },
+}
 </script>

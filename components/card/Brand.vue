@@ -18,7 +18,7 @@ export default {
   props: ['brand'],
   computed: {
     brandUrl() {
-      return '/brands/' + this.brand.id + '/'
+      return '/brands/' + this.brand.id
     },
   },
 }

@@ -3,8 +3,8 @@
     <div class="top-0 w-full h-full px-3 pb-4 lg:w-3/12">
       <base-link-back
         v-if="product.baseCategory"
-        :linkTo="'/c/' + baseCategory.id"
-        :linkName="baseCategory.name"
+        :linkTo="linkBackUrl"
+        :linkName="linkBackName"
       />
     </div>
     <div class="pb-12">
@@ -41,8 +41,13 @@ export default {
         (this.product.seo && this.product.seo.description) || this.product.name
       )
     },
-    baseCategory() {
-      return this.product.baseCategory
+    linkBackName() {
+      return this.product.baseCategory && this.product.baseCategory.name
+    },
+    linkBackUrl() {
+      return (
+        this.product.baseCategory && '/category/' + this.product.baseCategory.id
+      )
     },
   },
 }
