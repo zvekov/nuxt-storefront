@@ -15,9 +15,15 @@
       class="rounded-t-lg w-full lg:h-64 object-cover"
     /> -->
     <div class="p-4">
+      <content-loader v-if="!product.name"></content-loader>
       <div class="font-bold">{{ product.name }}</div>
-      <div class="opacity-50 text-xs">
-        {{ productCategory.name || product.baseCategory.name }}
+      <base-content-loader
+        v-if="!productCategoryName"
+        :width="100"
+        :height="7"
+      ></base-content-loader>
+      <div v-else class="opacity-50 text-xs">
+        {{ productCategoryName }}
       </div>
       <!-- <div class="flex flex-col items-start md:flex-row md:items-center pt-2">
         <ProductPrice :product="product" />
@@ -58,6 +64,9 @@ export default {
     // ProductEconomPercent,
   },
   computed: {
+    productCategoryName() {
+      return this.productCategory.name || this.product.baseCategory.name
+    },
     productUrl() {
       return '/product/' + this.product.id
     },

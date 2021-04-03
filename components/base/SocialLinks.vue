@@ -61,7 +61,14 @@
       </a>
     </li>
     <li v-if="viberNumber != null">
-      <base-viber-link :viberNumber="viberNumber" />
+      <a
+        :href="viberAction"
+        target="_blank"
+        rel="noreferrer noopener"
+        title="Viber"
+      >
+        <viber-icon />
+      </a>
     </li>
   </ul>
 </template>
@@ -72,6 +79,7 @@ import VkIcon from '~/assets/svg/VkIcon.svg?inline'
 import PinterestIcon from '~/assets/svg/PinterestIcon.svg?inline'
 import YoutubeIcon from '~/assets/svg/YoutubeIcon.svg?inline'
 import WhatsappIcon from '~/assets/svg/WhatsappIcon.svg?inline'
+import ViberIcon from '~/assets/svg/ViberIcon.svg?inline'
 
 import social from '~/data/socials.json'
 export default {
@@ -87,6 +95,7 @@ export default {
     YoutubeIcon,
     PinterestIcon,
     WhatsappIcon,
+    ViberIcon,
   },
   computed: {
     instagramLink() {
@@ -117,6 +126,11 @@ export default {
             ''
           )
         : null
+    },
+    viberAction() {
+      return this.$device.isMobile
+        ? 'viber://chat?number=' + this.viberNumber
+        : 'viber://add?number=' + this.viberNumber
     },
   },
 }

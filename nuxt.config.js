@@ -11,7 +11,7 @@ export default {
     apiUrl: process.env.API_URL || 'http://localhost:1337',
   },
   head: {
-    title: 'storefront-nuxt',
+    title: 'Awesome Nuxt Storefront',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -32,6 +32,7 @@ export default {
 
   buildModules: [
     '@nuxtjs/color-mode',
+    '@nuxtjs/device',
     '@nuxt/image',
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',

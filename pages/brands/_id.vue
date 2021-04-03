@@ -4,9 +4,9 @@
       <base-link-back :linkTo="'/brands/'" :linkName="'Brands'" />
     </div>
     <div class="pb-12">
-      <h1 v-if="brand" class="pb-3 px-3 text-2xl font-bold leading-snug">
-        {{ h1 }}
-      </h1>
+      <div class="pb-3 px-3 text-2xl font-bold leading-snug">
+        <h1>{{ h1 }}</h1>
+      </div>
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
         <span v-if="brand.iconSvg" class="w-full" v-html="brand.iconSvg" />
         <nuxt-picture
