@@ -14,24 +14,27 @@
 </template>
 <script>
 export default {
-  props: ["dataSize", "dataImage"],
+  props: ['dataSize', 'dataImage'],
   data() {
     return {
-      lang: "ru",
+      lang: 'ru',
       dataServices:
-        "telegram,whatsapp,viber,vkontakte,facebook,odnoklassniki,pinterest",
-    };
+        'telegram,whatsapp,viber,vkontakte,facebook,odnoklassniki,pinterest',
+    }
   },
-  metaInfo: {
-    script: [
-      {
-        src: "https://yastatic.net/share2/share.js",
-        async: true,
-        defer: true,
-      },
-    ],
+  head() {
+    return {
+      script: [
+        {
+          src: 'https://yastatic.net/share2/share.js',
+          body: true,
+          async: true,
+          crossorigin: 'anonymous',
+        },
+      ],
+    }
   },
-};
+}
 </script>
 <style lang="postcss">
 .ya-share2__container_size_m .ya-share2__badge + .ya-share2__title {
@@ -54,7 +57,7 @@ export default {
   .ya-share2__link_more.ya-share2__link_more-button-type_short:hover {
   background: rgba(0, 0, 0, 0.07);
 }
-body[data-theme="dark"] {
+body[data-theme='dark'] {
   & .ya-share2__icon_more {
     filter: invert();
     opacity: 0.9;

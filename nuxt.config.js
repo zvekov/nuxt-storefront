@@ -26,7 +26,7 @@ export default {
 
   css: ['@/assets/scss/app'],
 
-  plugins: [],
+  plugins: ['@/plugins/yandex-map.client.js'],
 
   components: true,
 

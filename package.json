@@ -47,6 +47,7 @@
     "tailwindcss-dark-mode": "^1.1.7",
     "tailwindcss-filters": "^3.0.0",
     "ts-jest": "^26.5.4",
-    "vue-jest": "^3.0.4"
+    "vue-jest": "^3.0.4",
+    "vue-yandex-maps": "^0.10.10"
   }
 }
