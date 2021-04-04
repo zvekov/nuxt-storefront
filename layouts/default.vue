@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col">
     <part-header />
-    <Nuxt class="pt-4 flex-1" />
+    <Nuxt keep-alive :keep-alive-props="{ max: 10 }" class="pt-4 flex-1" />
     <part-footer />
   </div>
 </template>
