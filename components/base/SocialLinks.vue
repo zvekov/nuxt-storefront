@@ -1,91 +1,128 @@
 <template>
-  <ul class="social grid grid-flow-col auto-cols-max items-center gap-3">
-    <li v-if="instagramLink != null">
-      <a
-        :href="instagramLink"
-        target="_blank"
-        title="Instagram"
-        rel="noreferrer noopener"
-      >
-        <instagram-icon />
-      </a>
-    </li>
-    <li v-if="pinterestLink != null">
-      <a
-        :href="pinterestLink"
-        target="_blank"
-        rel="noreferrer noopener"
-        title="Pinterest"
-      >
-        <pinterest-icon />
-      </a>
-    </li>
-    <li v-if="vkLink != null">
-      <a
-        :href="vkLink"
-        target="_blank"
-        title="Вконтакте"
-        rel="noreferrer noopener"
-      >
-        <vk-icon />
-      </a>
-    </li>
-    <li v-if="youtubeLink != null">
-      <a
-        :href="youtubeLink"
-        target="_blank"
-        title="Youtube"
-        rel="noreferrer noopener"
-      >
-        <youtube-icon />
-      </a>
-    </li>
-    <li v-if="telegramLink != null">
-      <a
-        :href="telegramLink"
-        target="_blank"
-        rel="noreferrer noopener"
-        title="Telegram"
-      >
-        <telegram-icon />
-      </a>
-    </li>
-    <li v-if="whatsappNumber != null">
-      <a
-        :href="'https://wa.me/' + whatsappNumber"
-        target="_blank"
-        rel="noreferrer noopener"
-        title="Whatsapp"
-      >
-        <whatsapp-icon />
-      </a>
-    </li>
-    <li v-if="viberNumber != null">
-      <a
-        :href="viberAction"
-        target="_blank"
-        rel="noreferrer noopener"
-        title="Viber"
-      >
-        <viber-icon />
-      </a>
-    </li>
-  </ul>
+  <div class="w-56">
+    <ul class="social grid grid-flow-col auto-cols-max items-center gap-3">
+      <li v-for="item in settings.social" :key="item.id">
+        <a
+          v-if="item.network === 'instagram'"
+          :href="'https://instagram.com/' + item.value"
+          target="_blank"
+          title="Instagram"
+          rel="noreferrer noopener"
+        >
+          <instagram-icon />
+        </a>
+        <a
+          v-if="item.network === 'vk'"
+          :href="'https://vk.com/' + item.value"
+          target="_blank"
+          title="VK"
+          rel="noreferrer noopener"
+        >
+          <vk-icon />
+        </a>
+        <a
+          v-if="item.network === 'pinterest'"
+          :href="'https://pinterest.com/' + item.value"
+          target="_blank"
+          title="Pinterest"
+          rel="noreferrer noopener"
+        >
+          <pinterest-icon />
+        </a>
+        <a
+          v-if="item.network === 'facebook'"
+          :href="'https://facebook.com/' + item.value"
+          target="_blank"
+          title="Facebook"
+          rel="noreferrer noopener"
+        >
+          <facebook-icon />
+        </a>
+        <a
+          v-if="item.network === 'telegram'"
+          :href="'https://t.me/' + item.value"
+          target="_blank"
+          title="Telegram"
+          rel="noreferrer noopener"
+        >
+          <telegram-icon />
+        </a>
+        <a
+          v-if="item.network === 'whatsapp'"
+          :href="'https://wa.me/' + item.value.replace(/[^0-9\.]+/g, '')"
+          target="_blank"
+          title="Whatsapp"
+          rel="noreferrer noopener"
+        >
+          <whatsapp-icon />
+        </a>
+        <a
+          v-if="item.network === 'viber'"
+          :href="
+            $device.isMobile
+              ? 'viber://chat?number=' +
+                item.value.replace(
+                  /[`~!@#$%^&*()_|\-=?;:'',.<>\{\}\[\]\\\/, ' ']/g,
+                  ''
+                )
+              : 'viber://add?number=' +
+                item.value.replace(
+                  /[`~!@#$%^&*()_|\-=?;:'',.<>\{\}\[\]\\\/, ' ']/g,
+                  ''
+                )
+          "
+          title="Viber"
+          rel="noreferrer noopener"
+        >
+          <viber-icon />
+        </a>
+        <a
+          v-if="item.network === 'twitter'"
+          :href="'https://twitter.com/' + item.value"
+          target="_blank"
+          title="Twitter"
+          rel="noreferrer noopener"
+        >
+          <twitter-icon />
+        </a>
+        <a
+          v-if="item.network === 'youtube'"
+          :href="'https://youtube.com/' + item.value"
+          target="_blank"
+          title="YouTube"
+          rel="noreferrer noopener"
+        >
+          <youtube-icon />
+        </a>
+        <a
+          v-if="item.network === 'wechat'"
+          :href="'weixin://dl/chat?' + item.value"
+          target="_blank"
+          title="Wechat"
+          rel="noreferrer noopener"
+        >
+          <wechat-icon />
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
-import InstagramIcon from '~/assets/svg/InstagramIcon.svg?inline'
-import TelegramIcon from '~/assets/svg/TelegramIcon.svg?inline'
-import VkIcon from '~/assets/svg/VkIcon.svg?inline'
-import PinterestIcon from '~/assets/svg/PinterestIcon.svg?inline'
-import YoutubeIcon from '~/assets/svg/YoutubeIcon.svg?inline'
-import WhatsappIcon from '~/assets/svg/WhatsappIcon.svg?inline'
-import ViberIcon from '~/assets/svg/ViberIcon.svg?inline'
+import InstagramIcon from '~/assets/icons/instagram.svg?inline'
+import TelegramIcon from '~/assets/icons/telegram.svg?inline'
+import VkIcon from '~/assets/icons/vk.svg?inline'
+import PinterestIcon from '~/assets/icons/pinterest.svg?inline'
+import YoutubeIcon from '~/assets/icons/youtube.svg?inline'
+import WhatsappIcon from '~/assets/icons/whatsapp.svg?inline'
+import ViberIcon from '~/assets/icons/viber.svg?inline'
+import FacebookIcon from '~/assets/icons/facebook.svg?inline'
+import TwitterIcon from '~/assets/icons/twitter.svg?inline'
+import WechatIcon from '~/assets/icons/wechat.svg?inline'
 
-import social from '~/data/socials.json'
 export default {
   data() {
     return {
-      social: social,
+      settings: {},
     }
   },
   components: {
@@ -96,43 +133,14 @@ export default {
     PinterestIcon,
     WhatsappIcon,
     ViberIcon,
+    FacebookIcon,
+    TwitterIcon,
+    WechatIcon,
   },
-  computed: {
-    instagramLink() {
-      return this.social ? this.social.instagram : null
-    },
-    vkLink() {
-      return this.social ? this.social.vk : null
-    },
-    pinterestLink() {
-      return this.social ? this.social.pinterest : null
-    },
-    youtubeLink() {
-      return this.social ? this.social.youtube : null
-    },
-    telegramLink() {
-      return this.social ? this.social.telegram : null
-    },
-    facebookLink() {
-      return this.social ? this.social.facebook : null
-    },
-    whatsappNumber() {
-      return this.social ? this.social.whatsapp.replace(/[^0-9\.]+/g, '') : null
-    },
-    viberNumber() {
-      return this.social
-        ? this.social.viber.replace(
-            /[`~!@#$%^&*()_|\-=?;:'",.<>\{\}\[\]\\\/, " "]/g,
-            ''
-          )
-        : null
-    },
-    viberAction() {
-      return this.$device.isMobile
-        ? 'viber://chat?number=' + this.viberNumber
-        : 'viber://add?number=' + this.viberNumber
-    },
+  async fetch() {
+    this.settings = await this.$strapi.$settings.find()
   },
+  fetchOnServer: false,
 }
 </script>
 <style lang="postcss">

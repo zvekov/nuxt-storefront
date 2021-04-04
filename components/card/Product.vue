@@ -2,7 +2,7 @@
   <nuxt-link
     :to="productUrl"
     :title="product.name"
-    class="product-card rounded-lg shadow-pressDefault hover:shadow-pressHover transform hover:translate-y-1 m-2 lg:m-3 transition-dark duration-300"
+    class="product-card rounded-lg shadow-pressDefault hover:shadow-pressHover transform hover:translate-y-1 m-2 lg:m-3 transition-dark duration-300 dark:bg-black dark:shadow-none"
   >
     <!-- <nuxt-image
       :src="product.cover[0].thumbnails.large.url"

@@ -24,7 +24,7 @@
           <span class="pr-16 md:pr-0"
             >You can also write to
             <a
-              :href="'https://wa.me/' + whatsappLink"
+              :href="'https://wa.me/'"
               class="link"
               target="_blank"
               title="Whatsapp"
@@ -32,12 +32,12 @@
             >,
             <a
               class="link lg:hidden"
-              :href="'viber://chat?number=' + viberLink"
+              :href="'viber://chat?number='"
               title="Viber"
               >Viber</a
             >
             <a
-              :href="'viber://add?number=' + viberLink"
+              :href="'viber://add?number='"
               class="link hidden lg:inline"
               title="Viber"
               >Viber</a
@@ -58,7 +58,7 @@
       </div>
       <ClientOnly>
         <base-yandex-map
-          class="w-full shadow-pressDefault rounded-lg h-64 md:h-full"
+          class="w-full shadow-pressDefault rounded-lg h-64 md:h-full dark:shadow-none"
         />
       </ClientOnly>
     </div>

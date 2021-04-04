@@ -1,11 +1,7 @@
 <template>
   <div class="relative w-full inner">
     <div class="top-0 w-full h-full px-3 pb-4 lg:w-3/12">
-      <base-link-back
-        v-if="category"
-        :linkTo="linkBackUrl"
-        :linkName="linkBackName"
-      />
+      <base-link-back :linkTo="linkBackUrl" :linkName="linkBackName" />
     </div>
     <div class="pb-12">
       <h1 v-if="category" class="pb-3 px-3 text-2xl font-bold leading-snug">

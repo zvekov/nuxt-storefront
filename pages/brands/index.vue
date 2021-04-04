@@ -12,7 +12,7 @@
           v-for="(brand, key) in brands"
           :key="key"
           :brand="brand"
-          class="flex justify-center items-center w-auto p-4 h-24 xxs:h-32 xs:h-40 rounded-lg shadow-pressDefault hover:shadow-pressHover transform hover:translate-y-1 transition-dark duration-300"
+          class="flex justify-center items-center w-auto p-4 h-24 xxs:h-32 xs:h-40 rounded-lg shadow-pressDefault hover:shadow-pressHover transform hover:translate-y-1 transition-dark duration-300 dark:shadow-none dark:border dark:border-white dark:border-opacity-10 dark:hover:border-opacity-30"
         />
       </div>
     </div>

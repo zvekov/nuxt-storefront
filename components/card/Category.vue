@@ -6,6 +6,7 @@
 </template>
 <script>
 export default {
-  props: ["category", "currentPage"],
-};
+  name: 'CategoryCard',
+  props: ['category', 'currentPage'],
+}
 </script>

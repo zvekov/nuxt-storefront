@@ -5,7 +5,12 @@
     class="flex items-center motion-safe:hover:-translate-x-2 transition-transform transform duration-300"
   >
     <arrow-back class="w-3 h-3 translate-x-0 group-hover:-translate-x-4" />
-    <span class="ml-2">{{ linkName }}</span>
+    <base-content-loader
+      v-if="!linkName"
+      :width="70"
+      :height="7.5"
+    ></base-content-loader>
+    <span v-else class="ml-2">{{ linkName }}</span>
   </nuxt-link>
 </template>
 

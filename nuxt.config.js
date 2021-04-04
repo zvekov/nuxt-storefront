@@ -48,6 +48,7 @@ export default {
       { name: 'products', type: 'collection' },
       { name: 'brands', type: 'collection' },
       { name: 'categories', type: 'collection' },
+      { name: 'settings', type: 'single' },
     ],
     key: 'userJwt',
   },

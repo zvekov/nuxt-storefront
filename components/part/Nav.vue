@@ -14,6 +14,7 @@
 <script>
 import nav from '@/data/navs.json'
 export default {
+  name: 'NavPart',
   data() {
     return {
       nav: nav,

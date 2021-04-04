@@ -35,6 +35,7 @@
 import nav from '@/data/navs.json'
 import settings from '@/data/settings.json'
 export default {
+  name: 'FooterPart',
   components: {
     //     VueMarkdown,
   },

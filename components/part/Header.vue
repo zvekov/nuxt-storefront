@@ -130,7 +130,7 @@
       style="height: 40px"
     > -->
     <part-nav
-      class="hidden shadow-pressDefault py-2 bg-white md:flex justify-center z-0"
+      class="hidden shadow-pressDefault py-2 bg-white dark:bg-black md:flex justify-center z-0 dark:border-t border-white border-opacity-10 dark:shadow-none"
     />
     <!-- </headroom> -->
   </header>
@@ -147,6 +147,7 @@ import SearchIcon from '~/assets/icons/search.svg?inline'
 // import ClickOutside from "vue-click-outside";
 // import { store, mutations } from "~/store.js";
 export default {
+  name: 'HeaderPart',
   components: {
     //     Burger,
     //     headroom,
@@ -249,7 +250,7 @@ body {
   }
 }
 header {
-  @apply bg-opacity-90 bg-white dark:bg-black dark:text-gray-100;
+  @apply bg-opacity-90 bg-white dark:bg-black dark:text-gray-100 dark:bg-opacity-90;
   border-color: var(--border-color-second);
 }
 body[data-theme='dark'] {
