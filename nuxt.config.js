@@ -26,7 +26,10 @@ export default {
 
   css: ['@/assets/scss/app'],
 
-  plugins: ['@/plugins/yandex-map.client.js'],
+  plugins: [
+    '@/plugins/yandex-map.client.js',
+    '@/plugins/numeral-filter.client.js',
+  ],
 
   components: true,
 
