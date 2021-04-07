@@ -5,10 +5,13 @@
     :title="brand.name"
   >
     <span v-if="brand.iconSvg" class="w-full" v-html="brand.iconSvg" />
-    <nuxt-picture
+    <nuxt-img
       v-if="!brand.iconSvg && brand.iconImg"
-      class="w-full"
-      :src="brand.iconImg.url"
+      width="200"
+      height="200"
+      fit="thumb"
+      provider="cloudinary"
+      :src="brand.iconImg.hash"
       :alt="brand.name"
     />
   </nuxt-link>
@@ -19,7 +22,7 @@ export default {
   props: ['brand'],
   computed: {
     brandUrl() {
-      return '/brands/' + this.brand.id
+      return '/brands/' + this.brand.slug + '/'
     },
   },
 }

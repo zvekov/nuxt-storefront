@@ -4,29 +4,33 @@
     :title="product.name"
     class="product-card rounded-lg shadow-pressDefault hover:shadow-pressHover transform hover:translate-y-1 m-2 lg:m-3 transition-dark duration-300 dark:bg-black dark:shadow-none"
   >
-    <!-- <nuxt-image
-      :src="'https://nuxt-storeback-strapi.herokuapp.com' + productCover"
-      class="rounded-t-lg w-full lg:h-64 object-cover"
-    /> -->
-    <img
+    <atoms-content-loader v-if="!productCover"></atoms-content-loader>
+    <!-- <base-product-cover :product="product" /> -->
+    <nuxt-img
+      v-else
       v-if="productCover"
-      :src="'https://nuxt-storeback-strapi.herokuapp.com' + productCover"
+      provider="cloudinary"
+      :src="productCover"
+      width="500"
+      height="500"
+      fit="thumb"
       class="rounded-t-lg w-full lg:h-64 object-cover"
     />
+    <!-- {{ productCover }} -->
     <div class="p-4">
       <content-loader v-if="!product.name"></content-loader>
       <div class="font-bold">{{ product.name }}</div>
-      <base-content-loader
+      <atoms-content-loader
         v-if="!productCategoryName"
         :width="100"
         :height="7"
-      ></base-content-loader>
+      ></atoms-content-loader>
       <div v-else class="opacity-50 text-xs">
         {{ productCategoryName }}
       </div>
       <div class="flex flex-col items-start md:flex-row md:items-center pt-2">
-        <base-product-price :product="product" />
-        <base-product-old-price
+        <atoms-product-price :product="product" />
+        <atoms-product-old-price
           :product="product"
           class="line-through opacity-50 text-xs md:pl-2"
         />
@@ -59,13 +63,14 @@ export default {
       return this.productCategory.name || this.product.baseCategory.name
     },
     productUrl() {
-      return '/product/' + this.product.id
+      return '/product/' + this.product.slug + '/'
     },
     productCover() {
       return (
         this.product &&
         this.product.variants[0] &&
-        this.product.variants[0].cover.url
+        this.product.variants[0].cover &&
+        this.product.variants[0].cover.hash
       )
     },
   },

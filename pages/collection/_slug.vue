@@ -1,0 +1,96 @@
+<template>
+  <div class="relative w-full inner">
+    <div class="top-0 w-full h-full px-3 pb-4 lg:w-3/12">
+      <atoms-link-back :linkTo="linkBackUrl" :linkName="linkBackName" />
+    </div>
+    <div class="pb-12">
+      <h1 v-if="collection" class="pb-3 px-3 text-2xl font-bold leading-snug">
+        {{ h1 }}
+      </h1>
+    </div>
+    <!-- Create custom component -->
+    <div
+      v-if="collection.products"
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
+    >
+      <card-product
+        v-for="product in collection.products"
+        :key="product.id"
+        :product="product"
+      />
+    </div>
+    <!-- Create custom component -->
+  </div>
+</template>
+<script>
+import { gql } from 'nuxt-graphql-request'
+import seo from '~/mixins/seo/page'
+export default {
+  name: 'CollectionPage',
+  mixins: [seo],
+  async asyncData({ $graphql, params }) {
+    const { slug } = params
+    const query = gql`
+      query GetPageBySlug($slug: String!) {
+        collections(where: { slug: $slug }) {
+          id
+          slug
+          name
+          seo {
+            h1
+            title
+            description
+          }
+          products {
+            id
+            slug
+            name
+            baseCategory {
+              name
+            }
+            variants {
+              price
+              oldPrice
+              cover {
+                hash
+              }
+            }
+          }
+        }
+      }
+    `
+    const page = await $graphql.default.request(query, {
+      slug,
+    })
+    return { page }
+  },
+  computed: {
+    collection() {
+      return this.page && this.page.collections[0]
+    },
+    h1() {
+      return (
+        (this.collection.seo && this.collection.seo.h1) || this.collection.name
+      )
+    },
+    metaTitle() {
+      return (
+        (this.collection.seo && this.collection.seo.title) ||
+        this.collection.name
+      )
+    },
+    metaDescription() {
+      return (
+        (this.collection.seo && this.collection.seo.description) ||
+        this.collection.name
+      )
+    },
+    linkBackName() {
+      return 'Collections'
+    },
+    linkBackUrl() {
+      return '/collections/'
+    },
+  },
+}
+</script>

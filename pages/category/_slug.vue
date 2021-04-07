@@ -1,7 +1,7 @@
 <template>
   <div class="relative w-full inner">
     <div class="top-0 w-full h-full px-3 pb-4 lg:w-3/12">
-      <base-link-back :linkTo="linkBackUrl" :linkName="linkBackName" />
+      <atoms-link-back :linkTo="linkBackUrl" :linkName="linkBackName" />
     </div>
     <div class="pb-12">
       <h1 v-if="category" class="pb-3 px-3 text-2xl font-bold leading-snug">
@@ -23,22 +23,57 @@
   </div>
 </template>
 <script>
+import { gql } from 'nuxt-graphql-request'
 import seo from '~/mixins/seo/page'
 export default {
   name: 'CategoryPage',
   mixins: [seo],
-  data() {
-    return {
-      category: {},
-    }
+  async asyncData({ $graphql, params }) {
+    const { slug } = params
+    const query = gql`
+      query GetPageBySlug($slug: String!) {
+        categories(where: { slug: $slug }) {
+          id
+          slug
+          name
+          mainCategory
+          topCategory {
+            id
+            slug
+            name
+          }
+          seo {
+            h1
+            title
+            description
+          }
+          products {
+            id
+            slug
+            name
+            baseCategory {
+              name
+            }
+            variants {
+              price
+              oldPrice
+              cover {
+                hash
+              }
+            }
+          }
+        }
+      }
+    `
+    const page = await $graphql.default.request(query, {
+      slug,
+    })
+    return { page }
   },
-  async fetch() {
-    this.category = await this.$strapi.$categories.findOne(
-      this.$route.params.id
-    )
-  },
-  fetchOnServer: false,
   computed: {
+    category() {
+      return this.page && this.page.categories[0]
+    },
     h1() {
       return (this.category.seo && this.category.seo.h1) || this.category.name
     },
@@ -60,7 +95,7 @@ export default {
     },
     linkBackUrl() {
       return this.category.topCategory
-        ? '/category/' + this.category.topCategory.id
+        ? '/category/' + this.category.topCategory.slug + '/'
         : '/catalog/'
     },
   },

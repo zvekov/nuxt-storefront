@@ -7,13 +7,13 @@
     >
       <div class="w-2/12 md:w-3/12 z-0">
         <!-- <Burger v-if="!isSearchShow" class="burger z-0 px-1 md:hidden" /> -->
-        <base-toggle-theme
+        <atoms-toggle-theme
           v-if="!isSearchShow"
           class="theme-mode z-0 px-3 hidden md:flex"
         />
       </div>
       <div class="w-8/12 md:w-6/12 flex flex-col" v-if="!isSearchShow">
-        <base-logo
+        <atoms-logo
           class="base-logo px-2 md:px-0 md:mt-0 w-full mx-auto md:w-56 md:mx-auto"
         />
       </div>
@@ -119,7 +119,7 @@
             </div>
           </transition> -->
         <!-- </div> -->
-        <base-toggle-theme class="theme-burger z-50" />
+        <atoms-toggle-theme class="theme-burger z-50" />
       </div>
     </div>
     <!-- <headroom

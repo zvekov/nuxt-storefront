@@ -29,7 +29,7 @@
         </nuxt-link>
       </div>
     </div>
-    <div class="py-16 inner">
+    <!-- <div class="py-16 inner">
       <h2 class="px-3 pb-6 text-2xl flex justify-center font-bold leading-snug">
         Brands
       </h2>
@@ -43,7 +43,7 @@
           class="flex justify-center items-center w-auto p-4 h-24 xxs:h-32 xs:h-40 rounded-lg shadow-pressDefault hover:shadow-pressHover transform hover:translate-y-1 transition-dark duration-300 dark:shadow-none dark:border dark:border-white dark:border-opacity-10 dark:hover:border-opacity-30"
         />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>

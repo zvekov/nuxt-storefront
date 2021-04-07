@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-logo class="w-48 mb-4 md:w-56" />
+    <atoms-logo class="w-48 mb-4 md:w-56" />
     <div class="flex items-center mb-1">
       <phone-icon class="w-5 mr-1 font-medium" />
       <base-phone-number :phone="phone" />

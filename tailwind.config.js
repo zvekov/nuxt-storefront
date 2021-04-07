@@ -132,7 +132,7 @@ module.exports = {
       'dark-odd',
       'dark-last',
     ],
-    filter: ['responsive', 'hover'],
+    filter: ['responsive', 'hover', 'dark'],
     backdropFilter: ['responsive'],
     borderColor: [
       'focus',

@@ -6,6 +6,13 @@ export default {
   telemetry: false,
   publicRuntimeConfig: {
     appUrl: process.env.APP_URL || 'http://localhost:3000',
+    graphql: {
+      clients: {
+        default: {
+          endpoint: apiUrl + '/graphql',
+        },
+      },
+    },
   },
   privateRuntimeConfig: {
     apiUrl: process.env.API_URL || 'http://localhost:1337',
@@ -40,11 +47,50 @@ export default {
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
     'nuxt-font-loader',
+    'nuxt-graphql-request',
   ],
 
   modules: ['@nuxtjs/strapi', '@nuxtjs/axios', '@nuxtjs/pwa', '@nuxtjs/svg'],
 
   axios: {},
+
+  graphql: {
+    /**
+     * An Object of your GraphQL clients
+     */
+    clients: {
+      default: {
+        /**
+         * The client endpoint url
+         */
+        endpoint: apiUrl + '/graphql',
+        /**
+         * Per-client options overrides
+         * See: https://github.com/prisma-labs/graphql-request#passing-more-options-to-fetch
+         */
+        options: {},
+      },
+      // ...your other clients
+    },
+
+    /**
+     * Options
+     * See: https://github.com/prisma-labs/graphql-request#passing-more-options-to-fetch
+     */
+    options: {},
+
+    /**
+     * Optional
+     * default: true (this includes cross-fetch/polyfill before creating the graphql client)
+     */
+    useFetchPolyfill: true,
+
+    /**
+     * Optional
+     * default: false (this includes graphql-tag for node_modules folder)
+     */
+    includeNodeModules: true,
+  },
   strapi: {
     url: apiUrl,
     entities: [
@@ -62,7 +108,12 @@ export default {
   colorMode: {
     classSuffix: '',
   },
-  image: {},
+  image: {
+    provider: 'cloudinary',
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/nuxtstorefront/image/upload/',
+    },
+  },
   fontLoader: {
     url:
       'https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap',
