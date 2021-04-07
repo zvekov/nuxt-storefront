@@ -1,9 +1,5 @@
 <template>
-  <span v-if="firstOldPrice > 0">
-    -{{
-      (((firstOldPrice - firstPrice) / firstOldPrice) * 100) | numeral('0')
-    }}%
-  </span>
+  <span v-if="firstOldPrice > 0"> -{{ economPercent.toFixed(0) }}% </span>
 </template>
 <script>
 export default {
@@ -18,6 +14,9 @@ export default {
     },
     firstOldPrice() {
       return this.firstVariant && this.firstVariant.oldPrice
+    },
+    economPercent() {
+      return ((this.firstOldPrice - this.firstPrice) / this.firstOldPrice) * 100
     },
   },
 }

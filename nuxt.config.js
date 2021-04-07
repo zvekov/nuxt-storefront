@@ -5,7 +5,7 @@ export default {
   target: 'server',
   telemetry: false,
   publicRuntimeConfig: {
-    appUrl: process.env.APP_URL || 'http://localhost:3000',
+    appUrl: appUrl || 'http://localhost:3000',
     graphql: {
       clients: {
         default: {
@@ -15,10 +15,10 @@ export default {
     },
   },
   privateRuntimeConfig: {
-    apiUrl: process.env.API_URL || 'http://localhost:1337',
+    apiUrl: apiUrl || 'http://localhost:1337',
   },
   head: {
-    title: 'Awesome Nuxt Storefront',
+    title: 'Nuxt Storefront',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -33,10 +33,7 @@ export default {
 
   css: ['@/assets/scss/app'],
 
-  plugins: [
-    '@/plugins/yandex-map.client.js',
-    '@/plugins/numeral-filter.client.js',
-  ],
+  plugins: ['@/plugins/yandex-map.client.js'],
 
   components: true,
 
@@ -55,40 +52,14 @@ export default {
   axios: {},
 
   graphql: {
-    /**
-     * An Object of your GraphQL clients
-     */
     clients: {
       default: {
-        /**
-         * The client endpoint url
-         */
         endpoint: apiUrl + '/graphql',
-        /**
-         * Per-client options overrides
-         * See: https://github.com/prisma-labs/graphql-request#passing-more-options-to-fetch
-         */
         options: {},
       },
-      // ...your other clients
     },
-
-    /**
-     * Options
-     * See: https://github.com/prisma-labs/graphql-request#passing-more-options-to-fetch
-     */
     options: {},
-
-    /**
-     * Optional
-     * default: true (this includes cross-fetch/polyfill before creating the graphql client)
-     */
     useFetchPolyfill: true,
-
-    /**
-     * Optional
-     * default: false (this includes graphql-tag for node_modules folder)
-     */
     includeNodeModules: true,
   },
   strapi: {
@@ -131,9 +102,9 @@ export default {
     extractCSS: true,
     // parallel: true,
     quiet: false,
-    analyze: false, // Анализ размеров пакетов в бандлах
+    analyze: false,
     splitChunks: {
-      pages: false,
+      pages: true,
       vendor: true,
       commons: true,
       runtime: true,
@@ -173,6 +144,12 @@ export default {
     //   },
     // },
     // crawler: false,
+  },
+  hooks: {
+    'vue-renderer:ssr:context'(context) {
+      const routePath = JSON.stringify(context.nuxt.routePath)
+      context.nuxt = { serverRendered: true, routePath }
+    },
   },
   // Global settings for app
   // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-global-name

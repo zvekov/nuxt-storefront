@@ -1,5 +1,5 @@
 <template>
-  <div class="relative inner w-full">
+  <div class="product-page relative inner w-full">
     <div
       class="w-auto px-3 mb-4 md:w-3/12 flex items-center justify-between h-6"
     >
@@ -9,8 +9,9 @@
         :linkName="linkBackName"
       />
       <atoms-social-share
+        v-if="$device.isMobile"
         class="md:hidden -mr-2"
-        :dataSize="'s'"
+        :dataSize="'m'"
         dataImage="cover"
       />
     </div>
@@ -18,7 +19,13 @@
       <div
         class="order-2 col-span-12 row-span-6 px-3 my-4 md:col-span-4 md:order-1 md:my-0"
       >
-        <!-- <base-product-cover :product="product.id" /> -->
+        <atoms-product-cover
+          :product="product"
+          :width="'600'"
+          :height="'600'"
+          :fit="'fill'"
+          class="rounded-lg shadow-xl"
+        />
       </div>
       <div
         class="order-1 col-span-12 row-span-1 px-3 md:col-span-8 md:order-2 z-10 flex items-center justify-between"
@@ -27,6 +34,7 @@
           {{ h1 }}
         </h1>
         <atoms-social-share
+          v-if="!$device.isMobile"
           class="hidden md:block"
           :dataSize="'m'"
           dataImage="cover"
@@ -76,26 +84,17 @@
               class="pl-1"
             />
           </span> -->
-          <!-- <span v-if="sku" class="text-xs">Код товара: {{ sku }}</span>
+          <!-- <span v-if="sku" class="text-xs">Код товара: {{ sku }}</span> -->
           <div class="flex items-center pt-2">
-            <ProductPrice
-              :product="$page.page"
-              :key="price"
+            <atoms-product-price
+              :product="product"
               class="text-lg font-extrabold"
             />
-            <ProductOldPrice
-              :product="$page.page"
-              :key="$page.page.oldPrice"
+            <atoms-product-old-price
+              :product="product"
               class="pl-2 text-xs line-through opacity-50"
             />
-          </div> -->
-
-          <!-- <button
-              onclick="ym(64658779,'reachGoal','buy-button'); Chatra('openChat', true)"
-              class="btn-buy flex justify-center w-auto py-1 mt-4 text-white transition-all duration-200 rounded-md cursor-pointer bg-opacity-70 hover:bg-opacity-100 focus:outline-none"
-            >
-              Оформить
-            </button> -->
+          </div>
           <button
             onclick="ym(64658779,'reachGoal','buy-button');  ReplainAPI('open')"
             class="btn-buy flex justify-center w-auto py-1 mt-4 text-white transition-all duration-200 rounded-md cursor-pointer bg-opacity-70 hover:bg-opacity-100 focus:outline-none"
@@ -163,6 +162,13 @@ export default {
             slug
             name
           }
+          variants {
+            price
+            oldPrice
+            cover {
+              hash
+            }
+          }
           collections {
             id
             name
@@ -208,3 +214,12 @@ export default {
   },
 }
 </script>
+<style lang="postcss">
+.product-page {
+  & .cover {
+    & img {
+      @apply rounded-lg object-cover;
+    }
+  }
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div class="flex" v-if="firstOldPrice > 0">
-    <span class="order-1 pr-1">{{ firstOldPrice | numeral('0.00') }}</span>
+    <span class="order-1 pr-1">{{ firstOldPrice.toFixed(2) }}</span>
     <span class="order-2 pr-1">$</span>
   </div>
 </template>

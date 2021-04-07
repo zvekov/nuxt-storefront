@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="flex" v-if="firstPrice > 0">
-      <span class="order-1 pr-1">{{ firstPrice | numeral('0.00') }}</span>
+      <span class="order-1 pr-1">{{ firstPrice.toFixed(2) }}</span>
       <base-product-measure :product="product" class="order-2 pr-1" />
     </span>
     <span

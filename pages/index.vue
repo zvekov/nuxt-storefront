@@ -57,14 +57,6 @@ export default {
     this.products = await this.$strapi.$products.find({ _limit: 4 })
   },
   fetchOnServer: false,
-  computed: {
-    brands() {
-      return this.$store.state.brands.brands
-    },
-  },
-  mounted() {
-    this.$store.dispatch('brands/update')
-  },
 }
 </script>
 <style lang="postcss">
