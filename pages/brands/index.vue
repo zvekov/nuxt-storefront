@@ -4,7 +4,7 @@
       <atoms-link-back :linkTo="'/'" :linkName="'Home'" />
     </div>
     <div class="pb-12">
-      <h1 class="pb-3 px-3 mb-4 text-2xl font-bold leading-snug">Brands</h1>
+      <h1 class="px-3 mb-4 text-2xl font-bold leading-snug">Brands</h1>
       <div
         class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 lg:gap-6 px-3"
       >

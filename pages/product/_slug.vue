@@ -8,11 +8,12 @@
         :linkTo="linkBackUrl"
         :linkName="linkBackName"
       />
-      <atoms-social-share
+      <atoms-web-share
         v-if="$device.isMobile"
-        class="md:hidden -mr-2"
-        :dataSize="'m'"
-        dataImage="cover"
+        class="md:hidden"
+        :title="metaTitle"
+        :text="metaDescription"
+        :url="$route.path"
       />
     </div>
     <div class="grid grid-flow-row grid-cols-12 pt-3">
