@@ -83,8 +83,7 @@ footer {
   }
   & li {
     & a {
-      @apply border-b border-opacity-10 leading-7 transition-all duration-300 transform;
-      border-color: var(--border-color);
+      @apply border-b border-opacity-10 border-transparent leading-7 transition-all duration-200 transform dark:text-white dark:opacity-80 dark:hover:opacity-100 dark:hover:border-white dark:hover:border-opacity-50 dark:border-transparent;
     }
   }
 }
