@@ -72,26 +72,21 @@ export default {
   },
   computed: {
     category() {
-      return this.page && this.page.categories[0]
+      return this.page?.categories[0]
     },
     h1() {
-      return (this.category.seo && this.category.seo.h1) || this.category.name
+      return this.category.seo?.h1 || this.category.name
     },
     metaTitle() {
-      return (
-        (this.category.seo && this.category.seo.title) || this.category.name
-      )
+      return this.category.seo?.title || this.category.name
     },
     metaDescription() {
-      return (
-        (this.category.seo && this.category.seo.description) ||
-        this.category.name
-      )
+      return this.category.seo?.description || this.category.name
     },
     linkBackName() {
       return this.category.mainCategory
         ? 'Catalog'
-        : this.category.topCategory && this.category.topCategory.name
+        : this.category.topCategory?.name
     },
     linkBackUrl() {
       return this.category.topCategory

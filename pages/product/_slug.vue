@@ -72,7 +72,7 @@
         class="top-0 order-3 h-full col-span-12 px-3 pt-6 md:pt-16 md:-mt-10 md:col-span-3 md:sticky md:order-4"
       >
         <div
-          class="product-scroll relative flex flex-col p-4 rounded-lg shadow-pressDefault"
+          class="product-scroll relative flex flex-col p-4 rounded-lg shadow-pressDefault dark:border dark:border-white dark:border-opacity-10 dark:shadow-none"
         >
           <!-- <span
             v-if="$page.page.oldPrice"
@@ -85,7 +85,7 @@
               class="pl-1"
             />
           </span> -->
-          <!-- <span v-if="sku" class="text-xs">Код товара: {{ sku }}</span> -->
+          <atoms-product-sku v-if="sku" :sku="sku" class="text-xs" />
           <div class="flex items-center pt-2">
             <atoms-product-price
               :product="product"
@@ -97,10 +97,10 @@
             />
           </div>
           <button
-            onclick="ym(64658779,'reachGoal','buy-button');  ReplainAPI('open')"
-            class="btn-buy flex justify-center w-auto py-1 mt-4 text-white transition-all duration-200 rounded-md cursor-pointer bg-opacity-70 hover:bg-opacity-100 focus:outline-none"
+            class="bg-black dark:bg-transparent border border-transparent dark:border-white dark:border-opacity-50 dark:hover:border-opacity-100 flex justify-center w-auto py-1 mt-4 text-white transition-all duration-200 rounded-md cursor-pointer bg-opacity-70 hover:bg-opacity-100 focus:outline-none"
           >
-            Оформить
+            <span v-if="product.variants[0].price">Add to cart</span>
+            <span v-else>Request a price</span>
           </button>
         </div>
       </div>
@@ -166,6 +166,9 @@ export default {
           variants {
             price
             oldPrice
+            data {
+              sku
+            }
             cover {
               hash
             }
@@ -190,21 +193,22 @@ export default {
   },
   computed: {
     product() {
-      return this.page && this.page.products[0]
+      return this.page?.products[0]
+    },
+    sku() {
+      return this.product.variants[0]?.data?.sku
     },
     h1() {
-      return (this.product.seo && this.product.seo.h1) || this.product.name
+      return this.product.seo?.h1 || this.product.name
     },
     metaTitle() {
-      return (this.product.seo && this.product.seo.title) || this.product.name
+      return this.product.seo?.title || this.product.name
     },
     metaDescription() {
-      return (
-        (this.product.seo && this.product.seo.description) || this.product.name
-      )
+      return this.product.seo?.description || this.product.name
     },
     linkBackName() {
-      return this.product.baseCategory && this.product.baseCategory.name
+      return this.product.baseCategory?.name
     },
     linkBackUrl() {
       return (

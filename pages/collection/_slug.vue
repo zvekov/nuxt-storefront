@@ -1,10 +1,10 @@
 <template>
   <div class="relative w-full inner">
-    <div class="top-0 w-full h-full px-3 pb-4 lg:w-3/12">
+    <div class="w-full h-full px-3 pb-4 lg:w-3/12">
       <atoms-link-back :linkTo="linkBackUrl" :linkName="linkBackName" />
     </div>
-    <div class="pb-12">
-      <h1 v-if="collection" class="pb-3 px-3 text-2xl font-bold leading-snug">
+    <div class="pb-4">
+      <h1 v-if="collection" class="px-3 text-2xl font-bold leading-snug">
         {{ h1 }}
       </h1>
     </div>
@@ -66,24 +66,16 @@ export default {
   },
   computed: {
     collection() {
-      return this.page && this.page.collections[0]
+      return this.page?.collections[0]
     },
     h1() {
-      return (
-        (this.collection.seo && this.collection.seo.h1) || this.collection.name
-      )
+      return this.collection.seo?.h1 || this.collection.name
     },
     metaTitle() {
-      return (
-        (this.collection.seo && this.collection.seo.title) ||
-        this.collection.name
-      )
+      return this.collection.seo?.title || this.collection.name
     },
     metaDescription() {
-      return (
-        (this.collection.seo && this.collection.seo.description) ||
-        this.collection.name
-      )
+      return this.collection.seo?.description || this.collection.name
     },
     linkBackName() {
       return 'Collections'

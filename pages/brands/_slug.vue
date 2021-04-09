@@ -79,16 +79,16 @@ export default {
   },
   computed: {
     brand() {
-      return this.page && this.page.brands[0]
+      return this.page?.brands[0]
     },
     h1() {
-      return (this.brand.seo && this.brand.seo.h1) || this.brand.name
+      return this.brand.seo?.h1 || this.brand.name
     },
     metaTitle() {
-      return (this.brand.seo && this.brand.seo.title) || this.brand.name
+      return this.brand.seo?.title || this.brand.name
     },
     metaDescription() {
-      return (this.brand.seo && this.brand.seo.description) || this.brand.name
+      return this.brand.seo?.description || this.brand.name
     },
   },
 }
