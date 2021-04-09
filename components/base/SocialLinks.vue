@@ -1,7 +1,11 @@
 <template>
   <div class="w-56">
-    <ul class="social grid grid-flow-col auto-cols-max items-center gap-3">
-      <li v-for="item in settings.social" :key="item.id">
+    <atoms-content-loader v-if="!socialLinks" :width="100" :height="10.5" />
+    <ul
+      v-else
+      class="social grid grid-flow-col auto-cols-max items-center gap-3"
+    >
+      <li v-for="item in socialLinks" :key="item.network">
         <a
           v-if="item.network === 'instagram'"
           :href="'https://instagram.com/' + item.value"
@@ -119,10 +123,12 @@ import FacebookIcon from '~/assets/icons/facebook.svg?inline'
 import TwitterIcon from '~/assets/icons/twitter.svg?inline'
 import WechatIcon from '~/assets/icons/wechat.svg?inline'
 
+import { gql } from 'nuxt-graphql-request'
+
 export default {
   data() {
     return {
-      settings: {},
+      data: {},
     }
   },
   components: {
@@ -138,9 +144,24 @@ export default {
     WechatIcon,
   },
   async fetch() {
-    this.settings = await this.$strapi.$settings.find()
+    const query = gql`
+      query SocialLinks {
+        setting {
+          social {
+            network
+            value
+          }
+        }
+      }
+    `
+    this.data = await this.$graphql.default.request(query)
   },
   fetchOnServer: false,
+  computed: {
+    socialLinks() {
+      return this.data?.setting?.social
+    },
+  },
 }
 </script>
 <style lang="postcss">
