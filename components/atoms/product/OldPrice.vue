@@ -9,11 +9,8 @@ export default {
   name: 'ProductOldPrice',
   props: ['product'],
   computed: {
-    firstVariant() {
-      return this.product && this.product.variants && this.product.variants[0]
-    },
     firstOldPrice() {
-      return this.firstVariant && this.firstVariant.oldPrice
+      return this.product.variants[0]?.oldPrice
     },
   },
 }

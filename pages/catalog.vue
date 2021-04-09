@@ -1,24 +1,20 @@
 <template>
   <div class="relative w-full inner">
-    <div
-      class="top-0 w-full h-full px-3 pb-4 lg:w-3/12 lg:sticky md:pt-16 md:-mt-16"
-    >
+    <div class="w-full h-full px-3 pb-4 lg:w-3/12">
       <atoms-link-back :linkTo="'/'" :linkName="'Home'" />
     </div>
-    <div class="px-3 grid md:grid-cols-2">
-      <div class="pb-4">
-        <h1 class="text-2xl font-bold leading-snug">
-          {{ 'Catalog' }}
-        </h1>
-      </div>
+    <div class="pb-4 px-3">
+      <h1 class="text-2xl font-bold leading-snug">
+        {{ 'Catalog' }}
+      </h1>
     </div>
     <!-- Create custom component -->
     <div
-      v-if="products"
+      v-if="page.products"
       class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
     >
       <card-product
-        v-for="product in products"
+        v-for="product in page.products"
         :key="product.id"
         :product="product"
       />
@@ -28,17 +24,47 @@
 </template>
 <script>
 // import PageMeta from "~/mixins/meta/PageMeta";
-
+import { gql } from 'nuxt-graphql-request'
 export default {
-  data() {
-    return {
-      products: [],
-    }
+  async asyncData({ $graphql }) {
+    const query = gql`
+      query GetProducts {
+        products {
+          id
+          slug
+          name
+          baseCategory {
+            id
+            slug
+            name
+          }
+          variants {
+            price
+            oldPrice
+            cover {
+              hash
+            }
+          }
+          collections {
+            id
+            name
+            slug
+          }
+          seo {
+            h1
+            title
+            description
+          }
+        }
+      }
+    `
+    const page = await $graphql.default.request(query)
+    return { page }
   },
-  async fetch() {
-    this.products = await this.$strapi.$products.find()
-  },
-  fetchOnServer: false,
+  // async fetch() {
+  //   this.products = await this.$strapi.$products.find()
+  // },
+  // fetchOnServer: false,
   // mixins: [PageMeta],
   // computed: {
   //   pageName() {

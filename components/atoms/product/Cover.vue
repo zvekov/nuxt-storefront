@@ -15,13 +15,7 @@ export default {
   props: ['product', 'width', 'height', 'fit'],
   computed: {
     productCover() {
-      return (
-        this.product &&
-        this.product.variants &&
-        this.product.variants[0] &&
-        this.product.variants[0].cover &&
-        this.product.variants[0].cover.hash
-      )
+      return this.product.variants[0]?.cover?.hash
     },
   },
 }

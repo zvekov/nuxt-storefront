@@ -11,11 +11,11 @@
       </h2>
       <!-- Create custom component -->
       <div
-        v-if="products"
+        v-if="special.products"
         class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6 inner"
       >
         <card-product
-          v-for="product in products"
+          v-for="product in special.products"
           :key="product.id"
           :product="product"
         />
@@ -47,16 +47,31 @@
   </div>
 </template>
 <script>
+import { gql } from 'nuxt-graphql-request'
 export default {
-  data() {
-    return {
-      products: [],
-    }
+  async asyncData({ $graphql }) {
+    const query = gql`
+      query SpecialProducts {
+        products(limit: 4) {
+          id
+          slug
+          name
+          baseCategory {
+            name
+          }
+          variants {
+            price
+            oldPrice
+            cover {
+              hash
+            }
+          }
+        }
+      }
+    `
+    const special = await $graphql.default.request(query)
+    return { special }
   },
-  async fetch() {
-    this.products = await this.$strapi.$products.find({ _limit: 4 })
-  },
-  fetchOnServer: false,
 }
 </script>
 <style lang="postcss">

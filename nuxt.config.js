@@ -90,6 +90,10 @@ export default {
       'https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap',
     prefetch: true,
     preconnect: true,
+    preload: {
+      google:
+        'https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap',
+    },
   },
   pwa: {
     manifest: {
@@ -158,8 +162,8 @@ export default {
   //   id: (globalName) => `__${globalName}`,
   //   nuxt: (globalName) => `$${globalName}`,
   //   context: (globalName) => `__${globalName.toUpperCase()}__`,
-  //   pluginPrefix: (globalName) => globalName,
-  //   readyCallback: (globalName) => `on${_.capitalize(globalName)}Ready`,
-  //   loadedCallback: (globalName) => `_on${_.capitalize(globalName)}Loaded`,
+  // pluginPrefix: (globalName) => globalName,
+  // readyCallback: (globalName) => `on${_.capitalize(globalName)}Ready`,
+  // loadedCallback: (globalName) => `_on${_.capitalize(globalName)}Loaded`,
   // },
 }

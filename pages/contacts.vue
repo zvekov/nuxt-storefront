@@ -11,7 +11,7 @@
         <div class="flex flex-col">
           <span class="flex items-center mb-1">
             <location-icon class="w-5 mr-1 font-medium" />
-            {{ address }}
+            <!-- {{ address }} -->
           </span>
           <span class="flex items-center mb-1">
             <phone-icon class="w-5 mr-1 font-medium" />
@@ -19,7 +19,7 @@
           </span>
           <span class="flex items-center mb-2">
             <mail-icon class="w-5 mr-1 font-medium" />
-            <a :href="'mailto:' + email" title="E-Mail">{{ email }}</a>
+            <!-- <a :href="'mailto:' + email" title="E-Mail">{{ email }}</a> -->
           </span>
           <span class="pr-16 md:pr-0"
             >You can also write to
