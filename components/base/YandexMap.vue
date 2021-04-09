@@ -34,11 +34,7 @@ export default {
     },
     coords: [52.896917, 30.042062],
     behaviors: ['multiTouch'], // Отключаем скроллинг карты в мобиле. Работает при нажатии двумя пальцами
-    // markerIcon: {
-    //   layout: 'default#image',
-    //   imageHref: '/marker_map.svg',
-    //   imageSize: [18, 18],
-    // },
+    markerIcon: {},
   }),
 }
 </script>

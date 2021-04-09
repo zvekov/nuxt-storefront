@@ -6,7 +6,7 @@
     </span>
     <span
       v-else
-      class="price-text border px-1 xxs:px-2 py-1 rounded-lg font-light text-xs"
+      class="price-text border px-1 xxs:px-2 py-1 rounded-lg font-light text-xs dark:border-white dark:border-opacity-30 dark:text-white dark:text-opacity-30"
     >
       Specify the cost
     </span>

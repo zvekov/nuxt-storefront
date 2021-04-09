@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-full inner">
-    <div class="w-full h-full px-3 pb-4 lg:w-3/12">
+    <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
       <atoms-link-back :linkTo="'/'" :linkName="'Home'" />
     </div>
     <div class="pb-12">

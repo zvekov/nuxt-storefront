@@ -1,8 +1,6 @@
 <template>
   <div class="product-page relative inner w-full">
-    <div
-      class="w-auto px-3 mb-4 md:w-3/12 flex items-center justify-between h-6"
-    >
+    <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
       <atoms-link-back
         v-if="product.baseCategory"
         :linkTo="linkBackUrl"
@@ -72,7 +70,7 @@
         class="top-0 order-3 h-full col-span-12 px-3 pt-6 md:pt-16 md:-mt-10 md:col-span-3 md:sticky md:order-4"
       >
         <div
-          class="product-scroll relative flex flex-col p-4 rounded-lg shadow-pressDefault dark:border dark:border-white dark:border-opacity-10 dark:shadow-none"
+          class="product-scroll relative flex flex-col p-4 rounded-lg shadow-pressDefault border border-transparent dark:border-white dark:border-opacity-10 dark:shadow-none"
         >
           <!-- <span
             v-if="$page.page.oldPrice"

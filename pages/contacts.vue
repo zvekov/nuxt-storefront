@@ -1,6 +1,6 @@
 <template>
   <div class="relative w-full inner">
-    <div class="w-full h-full px-3 pb-4 lg:w-3/12">
+    <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
       <atoms-link-back :linkTo="'/'" :linkName="'Home'" />
     </div>
     <div class="px-3 grid md:grid-cols-2">
@@ -11,15 +11,15 @@
         <div class="flex flex-col">
           <span class="flex items-center mb-1">
             <location-icon class="w-5 mr-1 font-medium" />
-            <!-- {{ address }} -->
+            Bartashova street 1
           </span>
           <span class="flex items-center mb-1">
             <phone-icon class="w-5 mr-1 font-medium" />
-            <!-- <base-phone-number :phone="phone" /> -->
+            +1 (111) 111-22-33
           </span>
           <span class="flex items-center mb-2">
             <mail-icon class="w-5 mr-1 font-medium" />
-            <!-- <a :href="'mailto:' + email" title="E-Mail">{{ email }}</a> -->
+            hello@example.com
           </span>
           <span class="pr-16 md:pr-0"
             >You can also write to
