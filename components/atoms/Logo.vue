@@ -1,13 +1,13 @@
 <template>
   <nuxt-link class="base-logo" to="/">
-    <logo class="h-10" />
+    <logotype class="h-10" />
   </nuxt-link>
 </template>
 <script>
-import Logo from '~/assets/svg/logo.svg?inline'
+import Logotype from '~/assets/svg/logo.svg?inline'
 export default {
   components: {
-    Logo,
+    Logotype,
   },
 }
 </script>
