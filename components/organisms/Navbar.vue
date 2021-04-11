@@ -7,25 +7,25 @@
       </nuxt-link>
     </li>
     <li>
-      <nuxt-link to="/">
+      <nuxt-link to="/catalog/">
         <catalog-icon />
         Catalog
       </nuxt-link>
     </li>
     <li>
-      <nuxt-link to="/">
+      <nuxt-link to="/cart/">
         <cart-icon />
         Cart
       </nuxt-link>
     </li>
     <li>
-      <nuxt-link to="/">
+      <nuxt-link to="/wishlist/">
         <wishlist-icon />
         Wishlist
       </nuxt-link>
     </li>
     <li>
-      <nuxt-link to="/">
+      <nuxt-link to="/my/">
         <account-icon />
         Account
       </nuxt-link>

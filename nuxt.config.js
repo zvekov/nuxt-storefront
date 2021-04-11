@@ -155,15 +155,33 @@ export default {
       context.nuxt = { serverRendered: true, routePath }
     },
   },
-  // Global settings for app
-  // https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-global-name
-  // globalName: 'app',
-  // globals: {
-  //   id: (globalName) => `__${globalName}`,
-  //   nuxt: (globalName) => `$${globalName}`,
-  //   context: (globalName) => `__${globalName.toUpperCase()}__`,
-  // pluginPrefix: (globalName) => globalName,
-  // readyCallback: (globalName) => `on${_.capitalize(globalName)}Ready`,
-  // loadedCallback: (globalName) => `_on${_.capitalize(globalName)}Loaded`,
-  // },
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'Wishlist',
+        path: '/wishlist/',
+        component: resolve(__dirname, 'pages/my/wishlist.vue'),
+      })
+        // routes.push({
+        //   name: 'Product',
+        //   path: '/:slug',
+        //   component: resolve(__dirname, 'pages/product/_slug.vue'),
+        // })
+        // routes.push({
+        //   name: 'Category',
+        //   path: '/:slug',
+        //   component: resolve(__dirname, 'pages/category/_slug.vue'),
+        // })
+        // routes.push({
+        //   name: 'Collection',
+        //   path: '/:slug',
+        //   component: resolve(__dirname, 'pages/collection/_slug.vue'),
+        // })
+        // routes.push({
+        //   name: 'Brand',
+        //   path: '/:slug',
+        //   component: resolve(__dirname, 'pages/brands/_slug.vue'),
+        // })
+    },
+  },
 }

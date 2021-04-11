@@ -16,9 +16,9 @@ export default {
 .default {
   @apply pb-12 md:pb-0;
 }
-@screen landscape {
+/* @screen landscape {
   div {
     max-width: calc(100% - 4rem);
   }
-}
+} */
 </style>
