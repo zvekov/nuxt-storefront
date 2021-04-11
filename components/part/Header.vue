@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 w-full border-b border-opacity-10 md:border-none mb-1 md:mb-6 md:relative z-40"
+    class="w-full border-b border-opacity-10 md:border-none mb-1 md:mb-6 md:relative z-40"
   >
     <div
       class="inner py-4 md:py-6 flex items-center w-full justify-between h-16"

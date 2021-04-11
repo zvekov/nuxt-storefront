@@ -143,7 +143,7 @@
   </div>
 </template>
 <script>
-import seo from '~/mixins/seo/page'
+import seo from '~/mixins/seo/product'
 import { gql } from 'nuxt-graphql-request'
 export default {
   name: 'ProductPage',
