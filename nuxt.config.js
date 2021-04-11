@@ -99,6 +99,10 @@ export default {
     manifest: {
       lang: 'en',
     },
+    meta: {
+      nativeUI: 'true',
+      theme_color: '#000000',
+    },
   },
 
   build: {
@@ -162,26 +166,26 @@ export default {
         path: '/wishlist/',
         component: resolve(__dirname, 'pages/my/wishlist.vue'),
       })
-        // routes.push({
-        //   name: 'Product',
-        //   path: '/:slug',
-        //   component: resolve(__dirname, 'pages/product/_slug.vue'),
-        // })
-        // routes.push({
-        //   name: 'Category',
-        //   path: '/:slug',
-        //   component: resolve(__dirname, 'pages/category/_slug.vue'),
-        // })
-        // routes.push({
-        //   name: 'Collection',
-        //   path: '/:slug',
-        //   component: resolve(__dirname, 'pages/collection/_slug.vue'),
-        // })
-        // routes.push({
-        //   name: 'Brand',
-        //   path: '/:slug',
-        //   component: resolve(__dirname, 'pages/brands/_slug.vue'),
-        // })
+      // routes.push({
+      //   name: 'Product',
+      //   path: '/:slug',
+      //   component: resolve(__dirname, 'pages/product/_slug.vue'),
+      // })
+      // routes.push({
+      //   name: 'Category',
+      //   path: '/:slug',
+      //   component: resolve(__dirname, 'pages/category/_slug.vue'),
+      // })
+      // routes.push({
+      //   name: 'Collection',
+      //   path: '/:slug',
+      //   component: resolve(__dirname, 'pages/collection/_slug.vue'),
+      // })
+      // routes.push({
+      //   name: 'Brand',
+      //   path: '/:slug',
+      //   component: resolve(__dirname, 'pages/brands/_slug.vue'),
+      // })
     },
   },
 }
