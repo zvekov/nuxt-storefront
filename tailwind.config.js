@@ -106,10 +106,6 @@ module.exports = {
       invert: 'invert(1)',
       sepia: 'sepia(1)',
     },
-    backdropFilter: {
-      none: 'none',
-      blur: 'blur(20px)',
-    },
     strokeWidth: {
       0: '0',
       50: '0.5',
@@ -134,7 +130,8 @@ module.exports = {
       'dark-last',
     ],
     filter: ['responsive', 'hover', 'dark'],
-    backdropFilter: ['responsive'],
+    backdropFilter: ['responsive', 'hover', 'focus', 'dark'],
+    backdropBlur: ['responsive', 'hover', 'focus', 'dark'],
     borderColor: [
       'focus',
       'focus-within',

@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="backdrop-filter backdrop-blur-lg">
     <li>
       <nuxt-link to="/">
         <home-icon />
@@ -51,7 +51,7 @@ export default {
 </script>
 <style lang="postcss" scoped>
 ul {
-  @apply bg-white grid grid-cols-5 justify-items-center border-t fixed bottom-0 w-full;
+  @apply bg-white bg-opacity-90 grid grid-cols-5 justify-items-center border-t fixed bottom-0 w-full dark:bg-black dark:text-gray-100 dark:bg-opacity-90 dark:border-white dark:border-opacity-20;
   @apply landscape:grid-cols-1 landscape:border-t-0 landscape:border-l landscape:right-0 landscape:w-16 landscape:h-screen;
   & li {
     @apply w-full lowercase text-xs;

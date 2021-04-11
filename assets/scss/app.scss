@@ -3,7 +3,7 @@
 
 // @tailwind base;
 // @tailwind components;
-// @tailwind utilities;
+@tailwind utilities;
 
 @variants group-hover {
   .group:hover .group-hover\:-translate-x-2 {
