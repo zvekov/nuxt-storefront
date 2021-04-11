@@ -7,10 +7,7 @@
     >
       <div class="w-2/12 md:w-3/12 z-0">
         <!-- <Burger v-if="!isSearchShow" class="burger z-0 px-1 md:hidden" /> -->
-        <atoms-toggle-theme
-          v-if="!isSearchShow"
-          class="theme-mode z-0 px-3 hidden md:flex"
-        />
+        <atoms-toggle-theme class="theme-mode z-0 px-3 md:flex" />
       </div>
       <div class="w-8/12 md:w-6/12 flex flex-col" v-if="!isSearchShow">
         <atoms-logo
