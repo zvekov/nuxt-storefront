@@ -26,7 +26,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     bodyAttrs: {
       class: [
-        'font-sans font-medium dark:bg-black dark:bg-opacity-90 dark:text-gray-100 transition-colors duration-300 ease-linear',
+        'font-sans font-medium dark:bg-black dark:bg-opacity-90 dark:text-gray-100',
       ],
     },
   },

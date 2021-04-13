@@ -14,7 +14,6 @@
         class="flex flex-col items-start p-3"
       />
       <widget-footer-contacts
-        :email="email"
         :phone="phone"
         class="flex flex-col items-start p-3 sm:justify-center lg:justify-start"
       />

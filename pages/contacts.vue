@@ -11,15 +11,15 @@
         <div class="flex flex-col">
           <span class="flex items-center mb-1">
             <location-icon class="w-5 mr-1 font-medium" />
-            Bartashova street 1
+            {{ address }}
           </span>
           <span class="flex items-center mb-1">
             <phone-icon class="w-5 mr-1 font-medium" />
-            +1 (111) 111-22-33
+            <atoms-phone-number :phone="phone" />
           </span>
           <span class="flex items-center mb-2">
             <mail-icon class="w-5 mr-1 font-medium" />
-            hello@example.com
+            <atoms-email :email="email" />
           </span>
           <span class="pr-16 md:pr-0"
             >You can also write to
@@ -71,12 +71,39 @@ import LocationIcon from '~/assets/icons/location.svg?inline'
 
 import seo from '~/mixins/seo/page'
 
+import { gql } from 'nuxt-graphql-request'
 export default {
   mixins: [seo],
   components: {
     MailIcon,
     PhoneIcon,
     LocationIcon,
+  },
+  async asyncData({ $graphql }) {
+    const query = gql`
+      query ContactEmail {
+        setting {
+          contacts {
+            address
+            phone
+            email
+          }
+        }
+      }
+    `
+    const data = await $graphql.default.request(query)
+    return { data }
+  },
+  computed: {
+    address() {
+      return this.data?.setting?.contacts?.address
+    },
+    email() {
+      return this.data?.setting?.contacts?.email
+    },
+    phone() {
+      return this.data?.setting?.contacts?.phone
+    },
   },
 }
 </script>

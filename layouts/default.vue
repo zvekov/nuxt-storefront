@@ -16,9 +16,10 @@ export default {
 .default {
   @apply pb-12 md:pb-0;
 }
-/* @screen landscape {
-  div {
-    max-width: calc(100% - 4rem);
+@media (orientation: landscape) and (max-height: 420px) {
+  .default {
+    @apply pb-0;
+    max-width: calc(100vw - 4rem);
   }
-} */
+}
 </style>

@@ -1,5 +1,8 @@
 <template>
-  <a :href="'tel:' + phoneNumber" title="Contact Phone">{{ phone }}</a>
+  <span>
+    <atoms-content-loader v-if="!phone" :width="100" :height="10" />
+    <a v-else :href="'tel:' + phoneNumber" title="Contact Phone">{{ phone }}</a>
+  </span>
 </template>
 <script>
 export default {
