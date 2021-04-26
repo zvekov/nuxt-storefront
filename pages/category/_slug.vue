@@ -1,20 +1,20 @@
 <template>
   <div class="relative w-full inner">
     <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
-      <atoms-link-back :linkTo="linkBackUrl" :linkName="linkBackName" />
+      <atoms-link-back :link-to="linkBackUrl" :link-name="linkBackName" />
     </div>
     <div class="pb-4">
-      <h1 v-if="category" class="px-3 text-2xl font-bold leading-snug">
+      <h1 v-if="page" class="px-3 text-2xl font-bold leading-snug">
         {{ h1 }}
       </h1>
     </div>
     <!-- Create custom component -->
     <div
-      v-if="category.products"
+      v-if="page.products"
       class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
     >
-      <card-product
-        v-for="product in category.products"
+      <molecules-card-product
+        v-for="product in page.products"
         :key="product.id"
         :product="product"
       />
@@ -65,32 +65,21 @@ export default {
         }
       }
     `
-    const page = await $graphql.default.request(query, {
+    const pageData = await $graphql.default.request(query, {
       slug,
     })
-    return { page }
+    return { pageData }
   },
   computed: {
-    category() {
-      return this.page?.categories[0]
-    },
-    h1() {
-      return this.category.seo?.h1 || this.category.name
-    },
-    metaTitle() {
-      return this.category.seo?.title || this.category.name
-    },
-    metaDescription() {
-      return this.category.seo?.description || this.category.name
+    page() {
+      return this.pageData?.categories[0]
     },
     linkBackName() {
-      return this.category.mainCategory
-        ? 'Catalog'
-        : this.category.topCategory?.name
+      return this.page.mainCategory ? 'Catalog' : this.page.topCategory?.name
     },
     linkBackUrl() {
-      return this.category.topCategory
-        ? '/category/' + this.category.topCategory.slug + '/'
+      return this.page.topCategory
+        ? '/c/' + this.page.topCategory.slug + '/'
         : '/catalog/'
     },
   },

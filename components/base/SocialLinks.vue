@@ -112,6 +112,7 @@
   </div>
 </template>
 <script>
+import { gql } from 'nuxt-graphql-request'
 import InstagramIcon from '~/assets/icons/instagram.svg?inline'
 import TelegramIcon from '~/assets/icons/telegram.svg?inline'
 import VkIcon from '~/assets/icons/vk.svg?inline'
@@ -123,14 +124,7 @@ import FacebookIcon from '~/assets/icons/facebook.svg?inline'
 import TwitterIcon from '~/assets/icons/twitter.svg?inline'
 import WechatIcon from '~/assets/icons/wechat.svg?inline'
 
-import { gql } from 'nuxt-graphql-request'
-
 export default {
-  data() {
-    return {
-      data: {},
-    }
-  },
   components: {
     InstagramIcon,
     TelegramIcon,
@@ -142,6 +136,11 @@ export default {
     FacebookIcon,
     TwitterIcon,
     WechatIcon,
+  },
+  data() {
+    return {
+      data: {},
+    }
   },
   async fetch() {
     const query = gql`

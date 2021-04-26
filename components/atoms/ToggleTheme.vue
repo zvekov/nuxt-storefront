@@ -55,10 +55,6 @@ export default {
     MoonIcon,
     SystemIcon,
   },
-  props: [],
-  data() {
-    return {}
-  },
   methods: {
     setCurrentTheme() {
       this.$colorMode.preference =

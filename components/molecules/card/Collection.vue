@@ -10,11 +10,11 @@
       class="rounded-lg w-full lg:h-64 object-cover"
     />
     <div
+      class="overlay h-full w-full flex transition-all duration-300 absolute bottom-0 top-auto px-6 rounded-lg flex-wrap items-end"
       @mouseover="hover = true"
       @mouseleave="hover = false"
-      class="overlay h-full w-full flex transition-all duration-300 absolute bottom-0 top-auto px-6 rounded-lg flex-wrap items-end"
     >
-      <div class="pb-4 duration-200 transition" v-if="hover">
+      <div v-if="hover" class="pb-4 duration-200 transition">
         <transition name="fade" appear>
           <div class="flex flex-col">
             <span class="text-white text-2xl font-bold w-full">
@@ -32,14 +32,14 @@
 
 <script>
 export default {
-  name: "CollectionCard",
-  props: ["collection", "currentPage"],
+  name: 'CollectionCard',
+  props: { collection: { type: Object, default: null } },
   data() {
     return {
       hover: false,
-    };
+    }
   },
-};
+}
 </script>
 <style lang="postcss">
 .overlay {

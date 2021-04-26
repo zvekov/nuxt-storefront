@@ -1,4 +1,15 @@
 export default {
+  computed: {
+    h1() {
+      return this.page?.seo?.h1 || this.page.name
+    },
+    metaTitle() {
+      return this.page?.seo?.title || this.page.name
+    },
+    metaDescription() {
+      return this.page?.seo?.description || this.page.name
+    },
+  },
   head() {
     return {
       title: this.metaTitle,
@@ -6,7 +17,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          name: 'description',
+          property: 'description',
           content: this.metaDescription,
         },
         {

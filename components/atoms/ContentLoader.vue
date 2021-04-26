@@ -1,7 +1,7 @@
 <template>
   <content-loader
-    :primaryColor="primaryColor"
-    :secondaryColor="secondaryColor"
+    :primary-color="primaryColor"
+    :secondary-color="secondaryColor"
     :width="width"
     :height="height"
   ></content-loader>
@@ -9,9 +9,18 @@
 <script>
 import { ContentLoader } from 'vue-content-loader'
 export default {
-  props: ['width', 'height'],
   components: {
     ContentLoader,
+  },
+  props: {
+    width: {
+      type: Number,
+      default: null,
+    },
+    height: {
+      type: Number,
+      default: null,
+    },
   },
   computed: {
     primaryColor() {

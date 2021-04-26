@@ -68,6 +68,7 @@ export default {
       { name: 'products', type: 'collection' },
       { name: 'brands', type: 'collection' },
       { name: 'categories', type: 'collection' },
+      { name: 'pages', type: 'collection' },
       { name: 'settings', type: 'single' },
     ],
     key: 'userJwt',
@@ -161,31 +162,55 @@ export default {
   },
   router: {
     extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'Wishlist',
-        path: '/wishlist/',
-        component: resolve(__dirname, 'pages/my/wishlist.vue'),
+      const routesToAdd = [
+        {
+          name: 'product-slug',
+          path: '/p/:slug',
+          component: resolve(__dirname, 'pages/product/_slug.vue'),
+          chunkName: 'pages/product/_slug',
+        },
+        {
+          name: 'category-slug',
+          path: '/c/:slug',
+          component: resolve(__dirname, 'pages/category/_slug.vue'),
+          chunkName: 'pages/category/_slug',
+        },
+        {
+          name: 'brand-slug',
+          path: '/b/:slug',
+          component: resolve(__dirname, 'pages/brands/_slug.vue'),
+          chunkName: 'pages/brands/_slug',
+        },
+        {
+          name: 'signup',
+          path: '/signup/',
+          component: resolve(__dirname, 'pages/my/signup.vue'),
+          chunkName: 'pages/my/signup',
+        },
+        {
+          name: 'wishlist',
+          path: '/wishlist/',
+          component: resolve(__dirname, 'pages/my/wishlist.vue'),
+          chunkName: 'pages/my/wishlist',
+        },
+      ]
+
+      const existingRoutesToRemove = routesToAdd.map((route) => route.name)
+
+      const generateRoutes = routes.filter((route) => {
+        return !existingRoutesToRemove.includes(route.name)
       })
-      // routes.push({
-      //   name: 'Product',
-      //   path: '/:slug',
-      //   component: resolve(__dirname, 'pages/product/_slug.vue'),
-      // })
-      // routes.push({
-      //   name: 'Category',
-      //   path: '/:slug',
-      //   component: resolve(__dirname, 'pages/category/_slug.vue'),
-      // })
-      // routes.push({
-      //   name: 'Collection',
-      //   path: '/:slug',
-      //   component: resolve(__dirname, 'pages/collection/_slug.vue'),
-      // })
-      // routes.push({
-      //   name: 'Brand',
-      //   path: '/:slug',
-      //   component: resolve(__dirname, 'pages/brands/_slug.vue'),
-      // })
+
+      routesToAdd.forEach(({ name, path, component, chunkName }) => {
+        generateRoutes.push({
+          name,
+          path,
+          component,
+          chunkName,
+        })
+      })
+
+      routes.splice(0, routes.length, ...generateRoutes)
     },
   },
 }

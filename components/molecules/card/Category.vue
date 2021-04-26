@@ -7,6 +7,6 @@
 <script>
 export default {
   name: 'CategoryCard',
-  props: ['category', 'currentPage'],
+  props: { category: { type: Object, default: null } },
 }
 </script>

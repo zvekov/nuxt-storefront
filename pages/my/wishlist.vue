@@ -1,7 +1,7 @@
 <template>
   <div class="relative w-full inner">
     <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
-      <atoms-link-back :linkTo="'/'" :linkName="'Home'" />
+      <atoms-link-back :link-to="'/'" :link-name="'Home'" />
     </div>
     <div class="px-3 pb-4 grid md:grid-cols-2">
       <div class="">
@@ -16,5 +16,6 @@
 <script>
 export default {
   name: 'WishlistPage',
+  computed: {},
 }
 </script>

@@ -45,7 +45,6 @@ export default {
           }
         }
       `
-
       const settings = await this.$graphql.default.request(query)
       commit('SET_SETTINGS', settings)
     },

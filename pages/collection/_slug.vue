@@ -1,20 +1,20 @@
 <template>
   <div class="relative w-full inner">
     <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
-      <atoms-link-back :linkTo="linkBackUrl" :linkName="linkBackName" />
+      <atoms-link-back :link-to="linkBackUrl" :link-name="linkBackName" />
     </div>
     <div class="pb-4">
-      <h1 v-if="collection" class="px-3 text-2xl font-bold leading-snug">
+      <h1 v-if="page" class="px-3 text-2xl font-bold leading-snug">
         {{ h1 }}
       </h1>
     </div>
     <!-- Create custom component -->
     <div
-      v-if="collection.products"
+      v-if="page.products"
       class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
     >
-      <card-product
-        v-for="product in collection.products"
+      <molecules-card-product
+        v-for="product in page.products"
         :key="product.id"
         :product="product"
       />
@@ -59,23 +59,14 @@ export default {
         }
       }
     `
-    const page = await $graphql.default.request(query, {
+    const pageData = await $graphql.default.request(query, {
       slug,
     })
-    return { page }
+    return { pageData }
   },
   computed: {
-    collection() {
-      return this.page?.collections[0]
-    },
-    h1() {
-      return this.collection.seo?.h1 || this.collection.name
-    },
-    metaTitle() {
-      return this.collection.seo?.title || this.collection.name
-    },
-    metaDescription() {
-      return this.collection.seo?.description || this.collection.name
+    page() {
+      return this.pageData?.collections[0]
     },
     linkBackName() {
       return 'Collections'

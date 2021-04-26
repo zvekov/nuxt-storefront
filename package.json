@@ -52,6 +52,7 @@
     "ts-jest": "^26.5.4",
     "vue-content-loader": "0.2",
     "vue-jest": "^3.0.7",
+    "vue-select": "^3.11.2",
     "vue-yandex-maps": "^0.10.10"
   }
 }

@@ -1,4 +1,3 @@
 <template>
-    <aside>
-    </aside>
+  <aside></aside>
 </template>

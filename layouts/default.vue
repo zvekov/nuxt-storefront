@@ -1,7 +1,10 @@
 <template>
-  <div class="default min-h-screen flex flex-col">
+  <div
+    class="default-layout min-h-screen flex flex-col"
+    :class="$route.name === 'product-slug' ? 'product-page' : ''"
+  >
     <part-header />
-    <Nuxt keep-alive :keep-alive-props="{ max: 10 }" class="pt-4 flex-1" />
+    <Nuxt keep-alive :keep-alive-props="{ max: 10 }" class="pt-4 flex-1 text" />
     <part-footer />
     <organisms-navbar :name="$route.name" />
   </div>
@@ -12,14 +15,13 @@ export default {
   mixins: [canonical],
 }
 </script>
-<style lang="postcss" scoped>
-.default {
-  @apply pb-12 md:pb-0;
-}
-@media (orientation: landscape) and (max-height: 420px) {
-  .default {
-    @apply pb-0;
-    max-width: calc(100vw - 4rem);
+<style lang="postcss">
+.default-layout {
+  padding-bottom: 61px;
+  @apply md:pb-0;
+  &.product-page {
+    padding-bottom: 125px;
+    @apply md:pb-0;
   }
 }
 </style>

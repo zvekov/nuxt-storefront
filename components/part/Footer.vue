@@ -2,19 +2,24 @@
   <footer>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 inner">
       <widget-footer-nav
+        v-if="footerCategories"
         :nav="footerCategories"
+        :title="'Categories'"
         class="flex flex-col items-start p-3"
       />
       <widget-footer-nav
+        v-if="footerCollections"
         :nav="footerCollections"
+        :title="'Collections'"
         class="flex flex-col items-start p-3"
       />
       <widget-footer-nav
-        :nav="footerLinks"
+        v-if="footerInformation"
+        :nav="footerInformation"
+        :title="'Information'"
         class="flex flex-col items-start p-3"
       />
       <widget-footer-contacts
-        :phone="phone"
         class="flex flex-col items-start p-3 sm:justify-center lg:justify-start"
       />
     </div>
@@ -30,37 +35,28 @@
 </template>
 
 <script>
-// import VueMarkdown from "vue-markdown";
-import nav from '@/data/navs.json'
-import settings from '@/data/settings.json'
 export default {
   name: 'FooterPart',
-  components: {
-    //     VueMarkdown,
-  },
   data() {
-    return { nav: nav, settings: settings }
+    return {
+      footerCategories: {},
+      footerCollections: {},
+      footerInformation: {},
+    }
   },
+  async fetch() {
+    this.footerCategories = await this.$http.$get(
+      'https://nuxt-storeback-strapi.herokuapp.com/navigation/render/footer-categories?type=tree'
+    )
+    this.footerCollections = await this.$http.$get(
+      'https://nuxt-storeback-strapi.herokuapp.com/navigation/render/footer-collections?type=tree'
+    )
+    this.footerInformation = await this.$http.$get(
+      'https://nuxt-storeback-strapi.herokuapp.com/navigation/render/footer-information?type=tree'
+    )
+  },
+  fetchOnServer: false,
   computed: {
-    footerCategories() {
-      return this.nav.footerCategories
-    },
-    footerCollections() {
-      return this.nav.footerCollections
-    },
-    footerLinks() {
-      return this.nav.footerLinks
-    },
-    phone() {
-      return `${
-        this.settings.phone || this.$static.settings.edges[0].node.phone
-      }`
-    },
-    email() {
-      return `${
-        this.settings.email || this.$static.settings.edges[0].node.email
-      }`
-    },
     copyright() {
       return `${
         'Nuxt Storefront © ' + new Date().getFullYear() ||

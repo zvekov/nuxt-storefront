@@ -12,7 +12,24 @@
 </template>
 <script>
 export default {
-  props: ['product', 'width', 'height', 'fit'],
+  props: {
+    product: {
+      type: Object,
+      default: null,
+    },
+    width: {
+      type: String,
+      default: null,
+    },
+    height: {
+      type: String,
+      default: null,
+    },
+    fit: {
+      type: String,
+      default: null,
+    },
+  },
   computed: {
     productCover() {
       return this.product.variants[0]?.cover?.hash

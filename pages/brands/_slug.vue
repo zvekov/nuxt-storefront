@@ -1,7 +1,7 @@
 <template>
   <div class="relative w-full inner">
     <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
-      <atoms-link-back :linkTo="'/brands/'" :linkName="'Brands'" />
+      <atoms-link-back :link-to="'/brands/'" :link-name="'Brands'" />
     </div>
     <div class="pb-12">
       <div class="pb-3 px-3 text-2xl font-bold leading-snug">
@@ -23,7 +23,7 @@
       v-if="brand.products"
       class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
     >
-      <card-product
+      <molecules-card-product
         v-for="product in brand.products"
         :key="product.id"
         :product="product"
@@ -33,8 +33,8 @@
   </div>
 </template>
 <script>
-import seo from '~/mixins/seo/page'
 import { gql } from 'nuxt-graphql-request'
+import seo from '~/mixins/seo/page'
 export default {
   name: 'BrandPage',
   mixins: [seo],

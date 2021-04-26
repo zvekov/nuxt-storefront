@@ -8,7 +8,7 @@
         <h1 class="text-2xl font-bold leading-snug">Sign Up</h1>
       </div>
     </div>
-    <form class="md:w-1/2 px-3">
+    <form class="md:w-1/2 px-3 pt-3">
       <div class="group">
         <input
           class="dark:border-opacity-50 dark:border-white"
@@ -42,18 +42,65 @@
         />
         <label>Phone</label>
       </div>
+      <!-- <div class="group">
+        <input
+          class="dark:border-opacity-50 dark:border-white"
+          type="tel"
+          required
+        />
+        <label>Country</label>
+      </div> -->
+      <div class="group">
+        <v-select
+          class="dark:border-opacity-50 dark:border-white"
+          :options="[{ label: 'Canada', code: 'ca' }]"
+        ></v-select>
+        <label>Country</label>
+      </div>
+      <div class="group">
+        <input
+          class="dark:border-opacity-50 dark:border-white"
+          type="tel"
+          required
+        />
+        <label>Region</label>
+      </div>
+      <div class="group">
+        <input
+          class="dark:border-opacity-50 dark:border-white"
+          type="tel"
+          required
+        />
+        <label>Address</label>
+      </div>
+      <div class="group">
+        <input
+          class="dark:border-opacity-50 dark:border-white"
+          type="tel"
+          required
+        />
+        <label>Postcode</label>
+      </div>
     </form>
   </div>
 </template>
 <script>
+import vSelect from 'vue-select'
 export default {
   name: 'SignupPage',
+  components: {
+    vSelect,
+  },
 }
 </script>
 
 <style lang="postcss">
 .group {
   @apply relative mb-4;
+
+  & .vs__dropdown-toggle {
+    @apply border-2 rounded-lg w-full;
+  }
 
   & input {
     @apply border-2 rounded-lg p-3 w-full;
@@ -70,6 +117,7 @@ export default {
     pointer-events: none;
   }
 }
+.vs--open input ~ label,
 input:focus ~ label,
 input:valid ~ label {
   @apply bg-white px-1 -ml-1 text-code text-green-700;

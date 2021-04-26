@@ -8,22 +8,22 @@
 <script>
 import IconShare from '~/assets/icons/share.svg?inline'
 export default {
+  components: {
+    IconShare,
+  },
   props: {
-    title: String,
-    text: String,
+    title: { type: String, default: null },
+    text: { type: String, default: null },
     url: {
       type: String,
       required: true,
     },
-    onError: Function,
-    onSuccess: Function,
-  },
-  components: {
-    IconShare,
+    onError: { type: Function, default: () => {} },
+    onSuccess: { type: Function, default: () => {} },
   },
   methods: {
     hasSlot() {
-      return !!this.$slots['clickable']
+      return !!this.$slots.clickable
     },
     share() {
       const data = {
@@ -44,10 +44,8 @@ export default {
               this.onError(err)
             }
           })
-      } else {
-        if (this.onError) {
-          this.onError('method not supported')
-        }
+      } else if (this.onError) {
+        this.onError('method not supported')
       }
     },
   },

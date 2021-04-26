@@ -6,7 +6,9 @@
 </template>
 <script>
 export default {
-  props: ['phone'],
+  props: {
+    phone: { type: String, default: null },
+  },
   computed: {
     phoneNumber() {
       return `${this.phone.replace(

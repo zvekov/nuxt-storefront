@@ -19,10 +19,10 @@
 <script>
 export default {
   name: 'BrandCard',
-  props: ['brand'],
+  props: { brand: { type: Object, default: null } },
   computed: {
     brandUrl() {
-      return '/brands/' + this.brand.slug + '/'
+      return '/b/' + this.brand.slug + '/'
     },
   },
 }

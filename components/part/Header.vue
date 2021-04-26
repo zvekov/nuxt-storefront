@@ -1,30 +1,39 @@
 <template>
   <header
-    class="w-full border-b border-opacity-10 md:border-none mb-1 md:mb-6 md:relative z-40"
+    class="w-full border-b border-opacity-10 md:border-none mb-1 md:mb-6 md:relative z-40 transition-all duration-200"
   >
-    <div
-      class="inner py-4 md:py-6 flex items-center w-full justify-between h-16"
-    >
-      <div class="w-2/12 md:w-3/12 z-0">
-        <!-- <Burger v-if="!isSearchShow" class="burger z-0 px-1 md:hidden" /> -->
-        <atoms-toggle-theme class="theme-mode z-0 px-3 md:flex" />
-      </div>
-      <div class="w-8/12 md:w-6/12 flex flex-col" v-if="!isSearchShow">
-        <atoms-logo
-          class="base-logo px-2 md:px-0 md:mt-0 w-full mx-auto md:w-56 md:mx-auto"
-        />
-      </div>
-      <div class="w-2/12 md:w-3/12 px-3 flex justify-end z-50">
-        <!-- <div
+    <transition name="fade">
+      <molecules-ads-header
+        v-if="isAdsHeader"
+        ref="adsHeader"
+        @clickToCloseAdsHeader="hideAdsHeader"
+      />
+    </transition>
+    <transition name="fade">
+      <div
+        :class="isAdsHeader ? 'mt-16 md:mt-10' : 'mt-0'"
+        class="inner py-4 md:py-6 flex items-center w-full justify-between h-16"
+      >
+        <div class="w-2/12 md:w-3/12 z-0">
+          <!-- <Burger v-if="!isSearchShow" class="burger z-0 px-1 md:hidden" /> -->
+          <atoms-toggle-theme class="theme-mode z-0 px-3 md:flex" />
+        </div>
+        <div class="w-8/12 md:w-6/12 flex flex-col">
+          <atoms-logo
+            class="base-logo px-2 md:px-0 md:mt-0 w-full mx-auto md:w-56 md:mx-auto"
+          />
+        </div>
+        <div class="w-2/12 md:w-3/12 px-3 flex justify-end z-50">
+          <!-- <div
           :class="{ 'is-active': searchResults.length }"
           class="search-form flex" 
         >-->
-        <!-- <div
+          <!-- <div
             class="w-full absolute right-0 left-0 z-10 inner h-8 px-5"
             :class="{ hidden: !isSearchShow }"
             v-click-outside="hideSearch"
           > -->
-        <!-- <button
+          <!-- <button
               v-on:click="hideSearch"
               :class="{ hidden: !isSearchShow }"
               type="button"
@@ -34,7 +43,7 @@
               <span class="close-bar close-bar--1"></span>
               <span class="close-bar close-bar--2"></span>
             </button> -->
-        <!-- <form @submit.prevent="searchResults">
+          <!-- <form @submit.prevent="searchResults">
               <input
                 v-if="isSearchShow"
                 id="search"
@@ -48,8 +57,8 @@
                 v-focus
               />
             </form> -->
-        <!-- </div> -->
-        <!-- <button
+          <!-- </div> -->
+          <!-- <button
           class="focus:outline-none z-50"
           v-if="!isSearchShow"
           @click="toggleSearch"
@@ -67,7 +76,7 @@
             <search-icon />
           </span>
         </button> -->
-        <!-- <transition name="fade">
+          <!-- <transition name="fade">
             <div v-if="searchResults.length > 0" class="search-result">
               <g-link
                 v-for="{ node: result, path } in searchResults"
@@ -115,10 +124,11 @@
               </g-link>
             </div>
           </transition> -->
-        <!-- </div> -->
-        <atoms-toggle-theme class="theme-burger z-50" />
+          <!-- </div> -->
+          <atoms-toggle-theme class="theme-burger z-50" />
+        </div>
       </div>
-    </div>
+    </transition>
     <!-- <headroom
       :offset="100"
       :speed="200"
@@ -137,7 +147,7 @@
 // import Burger from "~/components/molecules/header/burger/Burger";
 // import { headroom } from "vue-headroom";
 
-import SearchIcon from '~/assets/icons/search.svg?inline'
+// import SearchIcon from '~/assets/icons/search.svg?inline'
 // import ProductMeasure from "~/components/atoms/product/ProductMeasure";
 // import ProductOldPrice from "~/components/atoms/product/ProductOldPrice";
 
@@ -148,15 +158,16 @@ export default {
   components: {
     //     Burger,
     //     headroom,
-    SearchIcon,
+    // SearchIcon,
     //     ProductMeasure,
     //     ClickOutside,
     //     ProductOldPrice,
   },
-  data: () => ({
-    searchTerm: '',
-    isSearchShow: false,
-  }),
+  data() {
+    return {
+      isAdsHeader: true,
+    }
+  },
   //   computed: {
   //     searchResults() {
   //       const searchTerm = this.searchTerm;
@@ -220,6 +231,11 @@ export default {
   //     // prevent click outside event with popupItem.
   //     this.popupItem = this.$el;
   //   },
+  methods: {
+    hideAdsHeader() {
+      this.isAdsHeader = false
+    },
+  },
 }
 </script>
 <style lang="postcss">

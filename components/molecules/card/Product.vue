@@ -35,10 +35,15 @@
 <script>
 export default {
   name: 'ProductCard',
-  props: ['product'],
+  props: {
+    product: {
+      type: Object,
+      default: null,
+    },
+  },
   computed: {
     productUrl() {
-      return '/product/' + this.product.slug + '/'
+      return '/p/' + this.product.slug + '/'
     },
   },
 }

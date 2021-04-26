@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="pb-1 text-lg font-bold md:pb-2">{{ nav.title }}</div>
+    <div class="pb-1 text-lg font-bold md:pb-2">{{ title }}</div>
     <ul>
-      <li v-for="item in nav.items" :key="item.id" class="md:mb-1">
-        <nuxt-link :to="item.link" :title="item.name">
-          {{ item.name }}
-        </nuxt-link>
-      </li>
+      <template v-for="link in nav">
+        <li v-if="link.menuAttached" :key="link.id" class="md:mb-1">
+          <atoms-nav-link :link="link" />
+        </li>
+      </template>
     </ul>
   </div>
 </template>

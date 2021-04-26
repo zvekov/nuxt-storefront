@@ -20,6 +20,6 @@
 <script>
 export default {
   name: 'ProductMeasure',
-  props: ['product', 'currentPage'],
+  props: { product: { type: Object, default: null } },
 }
 </script>

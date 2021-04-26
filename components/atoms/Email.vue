@@ -6,6 +6,12 @@
 </template>
 <script>
 export default {
-  props: ['email'],
+  name: 'Email',
+  props: {
+    email: {
+      type: String,
+      default: null,
+    },
+  },
 }
 </script>

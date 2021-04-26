@@ -3,14 +3,16 @@
     <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
       <atoms-link-back
         v-if="product.baseCategory"
-        :linkTo="linkBackUrl"
-        :linkName="linkBackName"
+        :link-to="linkBackUrl"
+        :link-name="linkBackName"
       />
       <atoms-web-share
         v-if="$device.isMobile"
         class="md:hidden"
         :title="metaTitle"
         :text="metaDescription"
+        :on-error="onError"
+        :on-success="onSuccess"
         :url="$route.path"
       />
     </div>
@@ -35,8 +37,8 @@
         <atoms-social-share
           v-if="!$device.isMobile"
           class="hidden md:block"
-          :dataSize="'m'"
-          dataImage="cover"
+          :data-size="'m'"
+          data-image="cover"
         />
       </div>
       <div class="order-4 col-span-12 px-3 pt-6 md:col-span-5 md:order-3">
@@ -49,11 +51,11 @@
           </div> -->
 
         <!-- Create custom component CollectionList -->
-        <div v-if="product.collections.length > 0" class="flex pt-3">
+        <div v-if="product.collections.length > 0" class="flex flex-wrap pt-3">
           <div
-            class="collection flex mr-2 transition-colors duration-200 rounded-md"
             v-for="collection in product.collections"
             :key="collection.id"
+            class="collection flex mr-2 transition-colors duration-200 rounded-md"
           >
             <nuxt-link
               :to="'/collection/' + collection.slug + '/'"
@@ -94,13 +96,13 @@
               class="pl-2 text-xs line-through opacity-50"
             />
           </div>
-          <button
-            class="bg-black dark:bg-transparent border border-transparent dark:border-white dark:border-opacity-50 dark:hover:border-opacity-100 flex justify-center w-auto py-1 mt-4 text-white transition-all duration-200 rounded-md cursor-pointer bg-opacity-70 hover:bg-opacity-100 focus:outline-none"
-          >
-            <span v-if="product.variants[0].price">Add to cart</span>
-            <span v-else>Request a price</span>
-          </button>
+          <atoms-product-add-to-cart
+            v-if="!$device.isMobile"
+            class="mt-4 w-auto py-1"
+            :product="product"
+          />
         </div>
+        <molecules-card-brand class="brand" :brand="product.brand" />
       </div>
       <div class="order-4 col-span-12 md:col-span-9">
         <!-- <div v-if="$page.page.media.length > 0" class="py-8">
@@ -140,11 +142,15 @@
         />
       </div>
     </div> -->
+    <molecules-product-action-mobile
+      v-if="$device.isMobile"
+      :product="product"
+    />
   </div>
 </template>
 <script>
-import seo from '~/mixins/seo/product'
 import { gql } from 'nuxt-graphql-request'
+import seo from '~/mixins/seo/product'
 export default {
   name: 'ProductPage',
   mixins: [seo],
@@ -175,6 +181,15 @@ export default {
             id
             name
             slug
+          }
+          brand {
+            id
+            name
+            slug
+            iconSvg
+            iconImg {
+              hash
+            }
           }
           seo {
             h1
@@ -211,8 +226,17 @@ export default {
     linkBackUrl() {
       return (
         this.product.baseCategory &&
-        '/category/' + this.product.baseCategory.slug + '/'
+        '/c/' + this.product.baseCategory.slug + '/'
       )
+    },
+  },
+  methods: {
+    onError(err) {
+      alert(err)
+      console.log(err)
+    },
+    onSuccess(err) {
+      console.log(err)
     },
   },
 }
@@ -221,7 +245,13 @@ export default {
 .product-page {
   & .cover {
     & img {
-      @apply rounded-lg object-cover;
+      @apply rounded-lg object-cover min-w-full;
+    }
+  }
+  & .brand {
+    @apply opacity-50;
+    & svg {
+      @apply w-32 h-32 mx-auto opacity-50 hover:opacity-100 transition-all;
     }
   }
 }

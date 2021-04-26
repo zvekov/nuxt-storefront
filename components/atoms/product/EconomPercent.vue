@@ -3,8 +3,8 @@
 </template>
 <script>
 export default {
-  name: 'ProductImage',
-  props: ['product', 'currentPage'],
+  name: 'ProductEconomPercent',
+  props: { product: { type: Object, default: null } },
   computed: {
     firstPrice() {
       return this.product.variants[0]?.price

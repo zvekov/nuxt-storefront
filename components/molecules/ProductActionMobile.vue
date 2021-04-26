@@ -31,9 +31,9 @@ export default {
 </script>
 <style lang="postcss">
 .action-mobile {
-  @apply top-auto px-4 fixed w-full left-0 h-16 right-0 z-50 flex;
+  @apply top-auto px-4 fixed w-full left-0 h-16 right-0 z-50 flex bottom-0 top-auto;
   @apply border-t border-opacity-20 dark:border-white dark:border-opacity-20 bg-white dark:bg-black dark:bg-opacity-80 bg-opacity-80;
   backdrop-filter: blur(4px);
-  bottom: 61px;
+  margin-bottom: 61px;
 }
 </style>

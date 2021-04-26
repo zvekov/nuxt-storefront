@@ -14,7 +14,7 @@
         v-if="special.products"
         class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6 inner"
       >
-        <card-product
+        <molecules-card-product
           v-for="product in special.products"
           :key="product.id"
           :product="product"
@@ -36,7 +36,7 @@
       <div
         class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 lg:gap-6 px-3"
       >
-        <card-brand
+        <molecules-card-brand
           v-for="(brand, key) in brands"
           :key="key"
           :brand="brand"

@@ -4,6 +4,6 @@
 <script>
 export default {
   name: 'ProductSku',
-  props: ['sku'],
+  props: { sku: { type: String, default: null } },
 }
 </script>

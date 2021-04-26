@@ -14,7 +14,10 @@
 </template>
 <script>
 export default {
-  props: ['dataSize', 'dataImage'],
+  props: {
+    dataSize: { type: String, default: null },
+    dataImage: { type: String, default: null },
+  },
   data() {
     return {
       lang: 'en',

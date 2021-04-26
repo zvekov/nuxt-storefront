@@ -1,12 +1,12 @@
 <template>
   <div class="relative w-full inner">
     <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
-      <atoms-link-back :linkTo="'/'" :linkName="'Home'" />
+      <atoms-link-back :link-to="'/'" :link-name="'Home'" />
     </div>
     <div class="px-3 grid md:grid-cols-2">
       <div class="pb-12 md:pb-24">
         <h1 class="pb-3 text-2xl font-bold leading-snug">
-          {{ 'Contacts' }}
+          {{ h1 }}
         </h1>
         <div class="flex flex-col">
           <span class="flex items-center mb-1">
@@ -65,23 +65,23 @@
   </div>
 </template>
 <script>
+import { gql } from 'nuxt-graphql-request'
 import MailIcon from '~/assets/icons/mail.svg?inline'
 import PhoneIcon from '~/assets/icons/phone.svg?inline'
 import LocationIcon from '~/assets/icons/location.svg?inline'
 
 import seo from '~/mixins/seo/page'
 
-import { gql } from 'nuxt-graphql-request'
 export default {
-  mixins: [seo],
   components: {
     MailIcon,
     PhoneIcon,
     LocationIcon,
   },
+  mixins: [seo],
   async asyncData({ $graphql }) {
     const query = gql`
-      query ContactEmail {
+      query ContactPage {
         setting {
           contacts {
             address
@@ -89,20 +89,36 @@ export default {
             email
           }
         }
+        pages(where: { slug: "contacts" }) {
+          id
+          slug
+          name
+          seo {
+            h1
+            title
+            description
+            image {
+              previewUrl
+            }
+          }
+        }
       }
     `
-    const data = await $graphql.default.request(query)
-    return { data }
+    const pageData = await $graphql.default.request(query)
+    return { pageData }
   },
   computed: {
     address() {
-      return this.data?.setting?.contacts?.address
+      return this.pageData?.setting?.contacts?.address
     },
     email() {
-      return this.data?.setting?.contacts?.email
+      return this.pageData?.setting?.contacts?.email
     },
     phone() {
-      return this.data?.setting?.contacts?.phone
+      return this.pageData?.setting?.contacts?.phone
+    },
+    page() {
+      return this.pageData.pages[0]
     },
   },
 }
@@ -116,4 +132,4 @@ a {
     }
   }
 }
-</style>       
+</style>

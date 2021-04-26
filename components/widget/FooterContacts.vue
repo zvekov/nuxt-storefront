@@ -15,16 +15,16 @@
   </div>
 </template>
 <script>
+import { gql } from 'nuxt-graphql-request'
 import MailIcon from '~/assets/icons/mail.svg?inline'
 import PhoneIcon from '~/assets/icons/phone.svg?inline'
-import { gql } from 'nuxt-graphql-request'
 export default {
-  data() {
-    return { data: {} }
-  },
   components: {
     MailIcon,
     PhoneIcon,
+  },
+  data() {
+    return { data: {} }
   },
   async fetch() {
     const query = gql`

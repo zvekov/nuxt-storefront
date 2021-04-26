@@ -1,14 +1,14 @@
 <template>
   <div class="relative w-full inner">
     <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
-      <atoms-link-back :linkTo="'/'" :linkName="'Home'" />
+      <atoms-link-back :link-to="'/'" :link-name="'Home'" />
     </div>
     <div class="pb-12">
       <h1 class="px-3 mb-4 text-2xl font-bold leading-snug">Brands</h1>
       <div
         class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 lg:gap-6 px-3"
       >
-        <card-brand
+        <molecules-card-brand
           v-for="item in allBrands.brands"
           :key="item.id"
           :brand="item"

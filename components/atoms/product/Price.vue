@@ -1,8 +1,8 @@
 <template>
   <div>
-    <span class="flex" v-if="firstPrice > 0">
+    <span v-if="firstPrice > 0" class="flex">
       <span class="order-1 pr-1">{{ firstPrice.toFixed(2) }}</span>
-      <base-product-measure :product="product" class="order-2 pr-1" />
+      <atoms-product-measure :product="product" class="order-2 pr-1" />
     </span>
     <span
       v-else
@@ -15,7 +15,7 @@
 <script>
 export default {
   name: 'ProductPrice',
-  props: ['product'],
+  props: { product: { type: Object, default: null } },
   computed: {
     firstPrice() {
       return this.product.variants[0]?.price
