@@ -43,6 +43,7 @@ export default {
     '@nuxt/image',
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/ngrok',
     'nuxt-font-loader',
     'nuxt-graphql-request',
   ],
@@ -105,7 +106,11 @@ export default {
       theme_color: '#000000',
     },
   },
-
+  ngrok: {
+    authtoken: process.env.NGROK_AUTHTOKEN,
+    auth: 'demo:demo',
+    region: 'eu',
+  },
   build: {
     publicPath: '/assets/',
     extractCSS: true,

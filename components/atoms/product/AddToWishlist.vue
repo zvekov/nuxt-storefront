@@ -1,9 +1,6 @@
 <template>
-  <button class="w-12 h-10 my-auto flex items-center justify-center">
-    <wishlist-icon
-      class="w-10 h-10 text-black text-opacity-50 dark:text-white dark:text-opacity-50"
-      @click="sendProductIdToWishlist"
-    />
+  <button class="add-to-wishlist">
+    <wishlist-icon @click="sendProductIdToWishlist" />
   </button>
 </template>
 <script>
@@ -26,3 +23,11 @@ export default {
   },
 }
 </script>
+<style lang="postcss">
+.add-to-wishlist {
+  @apply w-12 h-10 my-auto flex items-center justify-center;
+  & svg {
+    @apply w-10 h-10 text-black text-opacity-50 dark:text-white dark:text-opacity-50;
+  }
+}
+</style>

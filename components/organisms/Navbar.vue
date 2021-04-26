@@ -1,5 +1,5 @@
 <template>
-  <ul ref="infoBox" class="backdrop-filter backdrop-blur-lg">
+  <ul class="backdrop-filter backdrop-blur-lg">
     <li>
       <nuxt-link to="/">
         <home-icon v-show="!isHome" />
@@ -89,11 +89,11 @@ export default {
 <style lang="postcss" scoped>
 ul {
   backdrop-filter: blur(4px);
-  @apply z-50 bg-white bg-opacity-90 grid grid-cols-5 justify-items-center border-t fixed bottom-0 w-full dark:bg-black dark:text-gray-100 dark:bg-opacity-90 dark:border-white dark:border-opacity-20;
+  @apply h-16 z-50 bg-white bg-opacity-90 grid grid-cols-5 justify-items-center border-t fixed bottom-0 w-full dark:bg-black dark:text-gray-100 dark:bg-opacity-90 dark:border-white dark:border-opacity-20;
   & li {
-    @apply w-full lowercase text-xs;
+    @apply w-full lowercase text-xs h-full;
     & > a {
-      @apply flex flex-col items-center w-full pt-2 pb-1;
+      @apply flex flex-col items-center w-full justify-center h-full;
       & svg {
         @apply w-8 h-8;
       }
