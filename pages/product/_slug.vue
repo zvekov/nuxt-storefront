@@ -96,6 +96,10 @@
               class="pl-2 text-xs line-through opacity-50"
             />
           </div>
+
+          <!-- <div v-for="variant in product.variants" :key="variant.id">
+            {{ variant }}
+          </div> -->
           <atoms-product-add-to-cart
             v-if="!$device.isMobile"
             class="mt-4 w-auto py-1"
@@ -168,10 +172,19 @@ export default {
             name
           }
           variants {
+            id
             price
             oldPrice
             data {
               sku
+            }
+            options {
+              product_option {
+                name
+              }
+              product_option_value {
+                value
+              }
             }
             cover {
               hash

@@ -1,3 +1,5 @@
 <template>
-  <aside></aside>
+  <aside>
+    <div>Filter Products</div>
+  </aside>
 </template>

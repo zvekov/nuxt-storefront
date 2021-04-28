@@ -108,7 +108,7 @@ export default {
   },
   ngrok: {
     authtoken: process.env.NGROK_AUTHTOKEN,
-    auth: 'demo:demo',
+    auth: 'dev:dev',
     region: 'eu',
   },
   build: {

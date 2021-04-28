@@ -3,23 +3,27 @@
     <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
       <atoms-link-back :link-to="linkBackUrl" :link-name="linkBackName" />
     </div>
-    <div class="pb-4">
-      <h1 v-if="page" class="px-3 text-2xl font-bold leading-snug">
-        {{ h1 }}
-      </h1>
+    <div :class="leftSidebar ? 'grid grid-cols-12' : ''" class="w-full">
+      <part-sidebar v-if="leftSidebar" class="px-3 col-span-3" />
+      <div :class="leftSidebar ? 'col-span-9' : ''">
+        <h1 v-if="page" class="pb-4 px-3 text-2xl font-bold leading-snug">
+          {{ h1 }}
+        </h1>
+        <!-- Create custom component -->
+        <div
+          v-if="page.products"
+          :class="leftSidebar ? '' : 'lg:grid-cols-4'"
+          class="grid grid-cols-2 md:grid-cols-3 pb-6"
+        >
+          <molecules-card-product
+            v-for="product in page.products"
+            :key="product.id"
+            :product="product"
+          />
+        </div>
+        <!-- Create custom component -->
+      </div>
     </div>
-    <!-- Create custom component -->
-    <div
-      v-if="page.products"
-      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
-    >
-      <molecules-card-product
-        v-for="product in page.products"
-        :key="product.id"
-        :product="product"
-      />
-    </div>
-    <!-- Create custom component -->
   </div>
 </template>
 <script>
@@ -28,6 +32,11 @@ import seo from '~/mixins/seo/page'
 export default {
   name: 'CategoryPage',
   mixins: [seo],
+  data() {
+    return {
+      leftSidebar: false,
+    }
+  },
   async asyncData({ $graphql, params }) {
     const { slug } = params
     const query = gql`

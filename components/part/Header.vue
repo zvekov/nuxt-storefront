@@ -125,7 +125,12 @@
             </div>
           </transition> -->
           <!-- </div> -->
-          <atoms-toggle-theme class="theme-burger z-50" />
+          <!-- <atoms-toggle-theme class="theme-burger z-50" /> -->
+          <div class="hidden md:grid gap-3 grid-cols-3">
+            <account-icon class="w-8 h-8" />
+            <wishlist-icon class="w-8 h-8" />
+            <cart-icon class="w-8 h-8" />
+          </div>
         </div>
       </div>
     </transition>
@@ -144,6 +149,9 @@
 </template>
 
 <script>
+import WishlistIcon from '~/assets/icons/wishlist.svg?inline'
+import CartIcon from '~/assets/icons/cart.svg?inline'
+import AccountIcon from '~/assets/icons/account.svg?inline'
 // import Burger from "~/components/molecules/header/burger/Burger";
 // import { headroom } from "vue-headroom";
 
@@ -156,6 +164,9 @@
 export default {
   name: 'HeaderPart',
   components: {
+    AccountIcon,
+    WishlistIcon,
+    CartIcon,
     //     Burger,
     //     headroom,
     // SearchIcon,
