@@ -187,6 +187,12 @@ export default {
           chunkName: 'pages/brands/_slug',
         },
         {
+          name: 'signin',
+          path: '/signin/',
+          component: resolve(__dirname, 'pages/my/signin.vue'),
+          chunkName: 'pages/my/signin',
+        },
+        {
           name: 'signup',
           path: '/signup/',
           component: resolve(__dirname, 'pages/my/signup.vue'),

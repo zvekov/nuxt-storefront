@@ -10,10 +10,38 @@
         </h1>
       </div>
     </div>
+    {{ user }}
+
+    <button @click="logoutUser">Logout</button>
   </div>
 </template>
 <script>
 export default {
   name: 'Account',
+  computed: {
+    user() {
+      return this.$strapi.user
+    },
+  },
+  methods: {
+    // logoutUser() {
+    //   this.$strapi.logout()
+    //   this.$strapi.clearToken()
+    //   this.$router.push('/')
+    // },
+    async logoutUser() {
+      try {
+        await this.$strapi.logout()
+      } catch (e) {
+        alert(e)
+      }
+      this.$router.push('/')
+    },
+  },
+  middleware({ $strapi, redirect }) {
+    if (!$strapi.user) {
+      return redirect('/signin/')
+    }
+  },
 }
 </script>

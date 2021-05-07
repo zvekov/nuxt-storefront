@@ -127,8 +127,12 @@
           <!-- </div> -->
           <!-- <atoms-toggle-theme class="theme-burger z-50" /> -->
           <div class="hidden md:grid gap-3 grid-cols-3">
-            <account-icon class="w-8 h-8" />
-            <wishlist-icon class="w-8 h-8" />
+            <nuxt-link to="/my/">
+              <account-icon class="w-8 h-8" />
+            </nuxt-link>
+            <nuxt-link to="/wishlist/">
+              <wishlist-icon class="w-8 h-8" />
+            </nuxt-link>
             <molecules-cart-header />
           </div>
         </div>
