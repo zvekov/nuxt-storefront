@@ -6,13 +6,43 @@
     <part-header />
     <Nuxt keep-alive :keep-alive-props="{ max: 10 }" class="pt-4 flex-1 text" />
     <part-footer />
-    <organisms-navbar :name="$route.name" />
+    <organisms-navbar v-if="$device.isMobileOrTablet" :name="$route.name" />
   </div>
 </template>
 <script>
 import canonical from '@/mixins/seo/canonical.js'
 export default {
   mixins: [canonical],
+  // computed: {
+  //   isAsideCart() {
+  //     return this.$store.getters['cart/toggleAsideCart']
+  //   },
+  // },
+  // watch: {
+  //   $route: function () {
+  //     if (process.client && this.isAsideCart) {
+  //       this.$store.dispatch('cart/toggleAsideCart')
+  //     }
+  //   },
+  // },
+  // data() {
+  //   return {
+  //     isAsideCart: false,
+  //   }
+  // },
+  // computed: {
+  //   isAsideCart() {
+  //     return this.$store.state.isAsideCart
+  //   },
+  // },
+  // created() {
+  //   this.$nuxt.$on('showAsideCart', () => {
+  //     this.isAsideCart = true
+  //   })
+  //   this.$nuxt.$on('hideAsideCart', () => {
+  //     this.isAsideCart = false
+  //   })
+  // },
 }
 </script>
 <style lang="postcss">

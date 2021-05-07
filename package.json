@@ -51,6 +51,7 @@
     "tailwindcss-dark-mode": "^1.1.7",
     "tailwindcss-filters": "^3.0.0",
     "ts-jest": "^26.5.5",
+    "vue-click-outside": "^1.1.0",
     "vue-content-loader": "0.2",
     "vue-jest": "^3.0.7",
     "vue-select": "^3.11.2",

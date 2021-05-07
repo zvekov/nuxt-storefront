@@ -11,8 +11,8 @@
         </div>
       </div>
     </nuxt-link>
-    <button class="absolute right-0 top-0">
-      <close-icon class="h-10 w-10 text-white" @click="closeAdsHeader" />
+    <button class="absolute right-0 top-0" @click="closeAdsHeader">
+      <close-icon class="h-10 w-10 text-white" />
     </button>
   </div>
 </template>

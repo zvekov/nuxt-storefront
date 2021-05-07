@@ -18,7 +18,7 @@
     </div>
     <div class="grid grid-flow-row grid-cols-12 pt-3">
       <div
-        class="order-2 col-span-12 row-span-6 px-3 my-4 md:col-span-4 md:order-1 md:my-0"
+        class="order-2 col-span-12 row-span-6 px-3 my-4 md:col-span-6 lg:col-span-4 md:order-1 md:my-0"
       >
         <atoms-product-cover
           :product="product"
@@ -29,7 +29,7 @@
         />
       </div>
       <div
-        class="order-1 col-span-12 row-span-1 px-3 md:col-span-8 md:order-2 z-10 flex items-center justify-between"
+        class="order-1 col-span-12 row-span-1 px-3 md:col-span-6 lg:col-span-8 md:order-2 z-10 flex items-center justify-between"
       >
         <h1 class="inline text-2xl font-bold leading-snug">
           {{ h1 }}
@@ -41,7 +41,9 @@
           data-image="cover"
         />
       </div>
-      <div class="order-4 col-span-12 px-3 pt-6 md:col-span-5 md:order-3">
+      <div
+        class="order-4 col-span-12 px-3 pt-6 md:col-span-6 lg:col-span-5 md:order-3"
+      >
         <!-- <template v-if="pageContent">
           <VueMarkdown :source="pageContent" class="product-content" />
         </template> -->
@@ -69,7 +71,7 @@
         <!-- Create custom component CollectionList -->
       </div>
       <div
-        class="top-0 order-3 h-full col-span-12 px-3 pt-6 md:pt-16 md:-mt-10 md:col-span-3 md:sticky md:order-4"
+        class="top-0 order-3 h-full col-span-12 px-3 pt-6 md:pt-16 md:-mt-10 md:col-span-6 lg:col-span-3 md:sticky md:order-4"
       >
         <div
           class="product-scroll relative flex flex-col p-4 rounded-lg shadow-pressDefault border border-transparent dark:border-white dark:border-opacity-10 dark:shadow-none"

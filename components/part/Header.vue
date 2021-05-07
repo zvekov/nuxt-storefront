@@ -129,7 +129,7 @@
           <div class="hidden md:grid gap-3 grid-cols-3">
             <account-icon class="w-8 h-8" />
             <wishlist-icon class="w-8 h-8" />
-            <cart-icon class="w-8 h-8" />
+            <molecules-cart-header />
           </div>
         </div>
       </div>
@@ -246,6 +246,9 @@ export default {
     hideAdsHeader() {
       this.isAdsHeader = false
     },
+    // showAsideCart() {
+    //   this.$nuxt.$emit('showAsideCart')
+    // },
   },
 }
 </script>
