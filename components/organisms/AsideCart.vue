@@ -6,14 +6,22 @@
       />
     </button>
     <div class="font-bold text-xl">My cart</div>
-    <div class="py-4">Your cart empty!</div>
+    <div v-if="cartQty < 1" class="mt-16 flex flex-col items-center">
+      <boredSvg class="h-32" />
+      <span class="pt-4 text-lg">Your cart empty!</span>
+    </div>
   </div>
 </template>
 <script>
 import CloseIcon from '~/assets/icons/close.svg?inline'
-
+import boredSvg from '~/assets/svg/bored.svg?inline'
 export default {
-  components: { CloseIcon },
+  data() {
+    return {
+      cartQty: 0,
+    }
+  },
+  components: { CloseIcon, boredSvg },
   methods: {
     hideAsideCart() {
       this.$emit('hideAsideCart')
