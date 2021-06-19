@@ -1,6 +1,16 @@
 <template>
   <header
-    class="w-full border-b border-opacity-10 md:border-none mb-1 md:mb-6 md:relative z-40 transition-all duration-200"
+    class="
+      w-full
+      border-b border-opacity-10
+      md:border-none
+      mb-1
+      md:mb-6
+      md:relative
+      z-40
+      transition-all
+      duration-200
+    "
   >
     <transition name="fade">
       <molecules-ads-header
@@ -20,7 +30,16 @@
         </div>
         <div class="w-8/12 md:w-6/12 flex flex-col">
           <atoms-logo
-            class="base-logo px-2 md:px-0 md:mt-0 w-full mx-auto md:w-56 md:mx-auto"
+            class="
+              base-logo
+              px-2
+              md:px-0
+              md:mt-0
+              w-full
+              mx-auto
+              md:w-56
+              md:mx-auto
+            "
           />
         </div>
         <div class="w-2/12 md:w-3/12 px-3 flex justify-end z-50">
@@ -126,10 +145,11 @@
           </transition> -->
           <!-- </div> -->
           <!-- <atoms-toggle-theme class="theme-burger z-50" /> -->
-          <div class="hidden md:grid gap-3 grid-cols-3">
+          <div class="hidden md:grid gap-6 grid-cols-4">
             <nuxt-link to="/my/">
               <account-icon class="w-8 h-8" />
             </nuxt-link>
+            <molecules-search-header />
             <nuxt-link to="/wishlist/">
               <wishlist-icon class="w-8 h-8" />
             </nuxt-link>
@@ -146,7 +166,19 @@
       style="height: 40px"
     > -->
     <part-nav
-      class="hidden shadow-pressDefault py-2 bg-white dark:bg-black md:flex justify-center z-0 dark:border-t border-white border-opacity-10 dark:shadow-none"
+      class="
+        hidden
+        shadow-pressDefault
+        py-2
+        bg-white
+        dark:bg-black
+        md:flex
+        justify-center
+        z-0
+        dark:border-t
+        border-white border-opacity-10
+        dark:shadow-none
+      "
     />
     <!-- </headroom> -->
   </header>
