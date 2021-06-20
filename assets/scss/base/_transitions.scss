@@ -59,3 +59,18 @@
 }
 
 // Right to Left
+
+// Top to Bottom
+
+.top-bottom-leave-active,
+.top-bottom-enter-active {
+  transition: 0.15s;
+}
+.top-bottom-enter {
+  transform: translate(0, -100%);
+}
+.top-bottom-leave-to {
+  transform: translate(0, -200%);
+}
+
+// Top to Bottom

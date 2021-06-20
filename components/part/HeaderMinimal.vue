@@ -13,21 +13,19 @@
     "
   >
     <transition name="fade">
-      <molecules-ads-header
-        v-if="isAdsHeader"
-        ref="adsHeader"
-        @clickToCloseAdsHeader="hideAdsHeader"
-      />
-    </transition>
-    <transition name="fade">
       <div
-        :class="isAdsHeader ? 'mt-16 md:mt-10' : 'mt-0'"
-        class="inner py-4 md:py-6 flex items-center w-full justify-between h-16"
+        class="
+          mt-0
+          inner
+          py-4
+          md:py-6
+          flex
+          items-center
+          w-full
+          justify-between
+          h-16
+        "
       >
-        <div class="w-2/12 md:w-3/12 z-0">
-          <!-- <Burger v-if="!isSearchShow" class="burger z-0 px-1 md:hidden" /> -->
-          <atoms-toggle-theme class="theme-mode z-0 px-3 md:flex" />
-        </div>
         <div class="w-8/12 md:w-6/12 flex flex-col">
           <atoms-logo
             class="
