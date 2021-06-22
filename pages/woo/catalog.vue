@@ -9,7 +9,7 @@
       </h1>
     </div>
     <!-- Create custom component -->
-    <div
+    <!-- <div
       v-if="page.products"
       class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
     >
@@ -17,6 +17,19 @@
         v-for="product in page.products"
         :key="product.id"
         :product="product"
+      />
+    </div> -->
+    <!-- Create custom component -->
+
+    <!-- Create custom component -->
+    <div
+      v-if="page.products.edges"
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
+    >
+      <woo-molecules-card-product
+        v-for="product in page.products.edges"
+        :key="product.node.id"
+        :product="product.node"
       />
     </div>
     <!-- Create custom component -->
@@ -27,38 +40,77 @@
 import { gql } from 'nuxt-graphql-request'
 export default {
   async asyncData({ $graphql }) {
+    // const query = gql`
+    //   query GetProducts {
+    //     products {
+    //       id
+    //       slug
+    //       name
+    //       baseCategory {
+    //         id
+    //         slug
+    //         name
+    //       }
+    //       variants {
+    //         price
+    //         oldPrice
+    //         cover {
+    //           hash
+    //         }
+    //       }
+    //       collections {
+    //         id
+    //         name
+    //         slug
+    //       }
+    //       seo {
+    //         h1
+    //         title
+    //         description
+    //       }
+    //     }
+    //   }
+    // `
+    // const page = await $graphql.default.request(query)
+
     const query = gql`
-      query GetProducts {
+      query allProducts {
         products {
-          id
-          slug
-          name
-          baseCategory {
-            id
-            slug
-            name
-          }
-          variants {
-            price
-            oldPrice
-            cover {
-              hash
+          edges {
+            node {
+              id
+              featured
+              databaseId
+              slug
+              status
+              name
+              sku
+              onSale
+              type
+              shortDescription(format: RAW)
+              ... on SimpleProduct {
+                price(format: FORMATTED)
+                id
+                regularPrice(format: FORMATTED)
+                stockStatus
+                stockQuantity
+              }
+              image {
+                sourceUrl(size: SHOP_CATALOG)
+              }
+              productCategories {
+                edges {
+                  node {
+                    name
+                  }
+                }
+              }
             }
-          }
-          collections {
-            id
-            name
-            slug
-          }
-          seo {
-            h1
-            title
-            description
           }
         }
       }
     `
-    const page = await $graphql.default.request(query)
+    const page = await $graphql.wooApi.request(query)
 
     return { page }
   },

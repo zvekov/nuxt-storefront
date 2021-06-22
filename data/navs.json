@@ -107,6 +107,11 @@
         ]
       },
       {
+        "id": 232,
+        "name": "Woo Catalog",
+        "link": "/woo/catalog/"
+      },
+      {
         "id": 2,
         "name": "Collections",
         "link": "/collections/"

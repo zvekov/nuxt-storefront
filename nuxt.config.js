@@ -1,5 +1,6 @@
 const apiUrl = process.env.API_URL || 'http://localhost:1337'
 const appUrl = process.env.APP_URL || 'http://localhost:3000'
+const wooUrl = process.env.WOO_URL
 
 export default {
   target: 'server',
@@ -10,6 +11,9 @@ export default {
       clients: {
         default: {
           endpoint: apiUrl + '/graphql',
+        },
+        wooApi: {
+          endpoint: wooUrl + '/graphql',
         },
       },
     },
@@ -58,6 +62,10 @@ export default {
         endpoint: apiUrl + '/graphql',
         options: {},
       },
+      wooApi: {
+        endpoint: wooUrl + '/graphql',
+        options: {},
+      },
     },
     options: {},
     useFetchPolyfill: true,
@@ -89,7 +97,6 @@ export default {
   },
   fontLoader: {
     url: 'https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap',
-    
     prefetch: true,
     preconnect: true,
     preload: {
