@@ -1,0 +1,11 @@
+---
+application:
+  name: "nuxt-storefront"
+  project: "Nuxt-storefront"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-nuxt-storefront"
+  routes:
+  - application_name: "nuxt-storefront"
+    paths:
+    - "/*"
