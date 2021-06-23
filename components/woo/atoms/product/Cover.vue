@@ -1,14 +1,7 @@
 <template>
   <div class="cover">
     <atoms-content-loader v-if="!productCover"></atoms-content-loader>
-    <!-- <nuxt-img
-      provider="cloudinary"
-      :src="productCover"
-      :width="width"
-      :height="height"
-      :fit="fit"
-    /> -->
-    <img provider="static" :src="productCover" />
+    <nuxt-img provider="static" :src="productCover" />
   </div>
 </template>
 <script>

@@ -42,6 +42,7 @@ export default {
   components: true,
 
   buildModules: [
+    '@nuxt/image',
     '@nuxtjs/color-mode',
     '@nuxtjs/device',
     '@nuxt/typescript-build',
@@ -88,7 +89,12 @@ export default {
   colorMode: {
     classSuffix: '',
   },
-
+  image: {
+    provider: 'cloudinary',
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/nuxtstorefront/image/upload/',
+    },
+  },
   fontLoader: {
     url: 'https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap',
     prefetch: true,

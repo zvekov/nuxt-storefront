@@ -1,12 +1,11 @@
 <template>
   <nuxt-link :to="productUrl" :title="product.name" class="product-card">
-    <!-- <atoms-product-cover
+    <atoms-product-cover
       :product="product"
       :width="'500'"
       :height="'500'"
       :fit="'thumb'"
-    /> -->
-    <img :src="coverUrl" class="object-cover w-full" />
+    />
     <div class="p-4">
       <content-loader v-if="!product.name"></content-loader>
       <div class="font-bold">{{ product.name }}</div>
