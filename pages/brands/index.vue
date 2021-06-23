@@ -6,13 +6,41 @@
     <div class="pb-12">
       <h1 class="px-3 mb-4 text-2xl font-bold leading-snug">Brands</h1>
       <div
-        class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 lg:gap-6 px-3"
+        class="
+          grid grid-cols-2
+          md:grid-cols-4
+          lg:grid-cols-6
+          gap-4
+          lg:gap-6
+          px-3
+        "
       >
         <molecules-card-brand
           v-for="item in allBrands.brands"
           :key="item.id"
           :brand="item"
-          class="flex justify-center items-center w-auto p-4 h-24 xxs:h-32 xs:h-40 rounded-lg shadow-pressDefault hover:shadow-pressHover transform hover:translate-y-1 transition-dark duration-300 dark:shadow-none dark:border dark:border-white dark:border-opacity-10 dark:hover:border-opacity-30"
+          class="
+            flex
+            justify-center
+            items-center
+            w-auto
+            p-4
+            h-24
+            xxs:h-32
+            xs:h-40
+            rounded-lg
+            shadow-pressDefault
+            hover:shadow-pressHover
+            transform
+            hover:translate-y-1
+            transition-dark
+            duration-300
+            dark:shadow-none
+            dark:border
+            dark:border-white
+            dark:border-opacity-10
+            dark:hover:border-opacity-30
+          "
         />
       </div>
     </div>

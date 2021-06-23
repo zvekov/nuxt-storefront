@@ -1,6 +1,19 @@
 <template>
   <button
-    class="relative overflow-hidden items-center rounded-full h-10 outline-none text-light-onSurfacePrimary dark:text-dark-onSurfacePrimary transition-colors duration-300 ease-linear flex"
+    class="
+      relative
+      overflow-hidden
+      items-center
+      rounded-full
+      h-10
+      outline-none
+      text-light-onSurfacePrimary
+      dark:text-dark-onSurfacePrimary
+      transition-colors
+      duration-300
+      ease-linear
+      flex
+    "
     @click="setCurrentTheme"
   >
     <span
@@ -10,10 +23,10 @@
         class="w-6 h-6 absolute"
         :class="$colorMode.preference === 'dark' ? 'show' : 'hide'"
       />
-      <system-icon
+      <!-- <system-icon
         class="w-6 h-6 absolute"
         :class="$colorMode.preference === 'system' ? 'show' : 'hide'"
-      />
+      /> -->
       <sun-icon
         class="w-6 h-6 absolute"
         :class="$colorMode.preference === 'light' ? 'show' : 'hide'"
@@ -48,22 +61,30 @@
 <script>
 import SunIcon from '~/assets/icons/sun.svg?inline'
 import MoonIcon from '~/assets/icons/moon.svg?inline'
-import SystemIcon from '~/assets/icons/system.svg?inline'
+// import SystemIcon from '~/assets/icons/system.svg?inline'
 export default {
   components: {
     SunIcon,
     MoonIcon,
-    SystemIcon,
+    // SystemIcon,
   },
   methods: {
     setCurrentTheme() {
       this.$colorMode.preference =
-        this.$colorMode.preference === 'system'
-          ? 'light'
-          : this.$colorMode.preference === 'light'
+        this.$colorMode.preference === 'light'
           ? 'dark'
-          : 'system'
+          : this.$colorMode.preference === 'dark'
+          ? 'light'
+          : 'dark'
     },
+    // setCurrentTheme() {
+    //   this.$colorMode.preference =
+    //     this.$colorMode.preference === 'system'
+    //       ? 'light'
+    //       : this.$colorMode.preference === 'light'
+    //       ? 'dark'
+    //       : 'system'
+    // },
   },
 }
 </script>

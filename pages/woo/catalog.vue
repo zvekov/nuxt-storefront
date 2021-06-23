@@ -8,18 +8,6 @@
         {{ 'Catalog' }}
       </h1>
     </div>
-    <!-- Create custom component -->
-    <!-- <div
-      v-if="page.products"
-      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
-    >
-      <molecules-card-product
-        v-for="product in page.products"
-        :key="product.id"
-        :product="product"
-      />
-    </div> -->
-    <!-- Create custom component -->
 
     <!-- Create custom component -->
     <div
@@ -40,39 +28,6 @@
 import { gql } from 'nuxt-graphql-request'
 export default {
   async asyncData({ $graphql }) {
-    // const query = gql`
-    //   query GetProducts {
-    //     products {
-    //       id
-    //       slug
-    //       name
-    //       baseCategory {
-    //         id
-    //         slug
-    //         name
-    //       }
-    //       variants {
-    //         price
-    //         oldPrice
-    //         cover {
-    //           hash
-    //         }
-    //       }
-    //       collections {
-    //         id
-    //         name
-    //         slug
-    //       }
-    //       seo {
-    //         h1
-    //         title
-    //         description
-    //       }
-    //     }
-    //   }
-    // `
-    // const page = await $graphql.default.request(query)
-
     const query = gql`
       query allProducts {
         products {
@@ -98,7 +53,7 @@ export default {
               image {
                 sourceUrl(size: SHOP_CATALOG)
               }
-              productCategories {
+              productCategories(last: 1) {
                 edges {
                   node {
                     name

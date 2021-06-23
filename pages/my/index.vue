@@ -17,15 +17,15 @@
 <script>
 export default {
   name: 'Account',
-  computed: {
-    user() {
-      return this.$strapi.user
-    },
-  },
   middleware({ $strapi, redirect }) {
     if (!$strapi.user) {
       return redirect('/signin/')
     }
+  },
+  computed: {
+    user() {
+      return this.$strapi.user
+    },
   },
 }
 </script>

@@ -14,8 +14,8 @@
     <form class="md:w-1/2 px-3 pt-3" @submit="loginUser">
       <div class="group">
         <input
-          class="dark:border-opacity-50 dark:border-white"
           v-model="identifier"
+          class="dark:border-opacity-50 dark:border-white"
           type="email"
           required
         />
@@ -23,8 +23,8 @@
       </div>
       <div class="group">
         <input
-          class="dark:border-opacity-50 dark:border-white"
           v-model="password"
+          class="dark:border-opacity-50 dark:border-white"
           type="password"
           required
         />
@@ -33,7 +33,16 @@
       <div>
         <button
           :disabled="identifier === '' || password === ''"
-          class="bg-black bg-opacity-80 text-white px-4 py-2 rounded-lg hover:bg-opacity-70 transition-all duration-200"
+          class="
+            bg-black bg-opacity-80
+            text-white
+            px-4
+            py-2
+            rounded-lg
+            hover:bg-opacity-70
+            transition-all
+            duration-200
+          "
           type="submit"
         >
           Signin
@@ -52,6 +61,7 @@ export default {
   components: {
     vSelect,
   },
+  middleware: 'authenticated',
   data() {
     return {
       identifier: '',
@@ -77,7 +87,6 @@ export default {
       }
     },
   },
-  middleware: 'authenticated',
 }
 </script>
 

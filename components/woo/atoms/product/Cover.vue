@@ -8,7 +8,7 @@
       :height="height"
       :fit="fit"
     /> -->
-    <nuxt-picture provider="static" :src="productCover" />
+    <img provider="static" :src="productCover" />
   </div>
 </template>
 <script>

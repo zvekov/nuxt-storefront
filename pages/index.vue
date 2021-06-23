@@ -24,7 +24,19 @@
       <div class="flex justify-center">
         <nuxt-link
           to="/special/"
-          class="btn-red bg-red-600 bg-opacity-70 hover:bg-opacity-100 px-4 py-1 rounded-lg transform transition-all duration-200 scale-100 hover:scale-110 hover:shadow-pressDefault"
+          class="
+            btn-red
+            bg-red-600 bg-opacity-70
+            hover:bg-opacity-100
+            px-4
+            py-1
+            rounded-lg
+            transform
+            transition-all
+            duration-200
+            scale-100
+            hover:scale-110 hover:shadow-pressDefault
+          "
           >All special
         </nuxt-link>
       </div>

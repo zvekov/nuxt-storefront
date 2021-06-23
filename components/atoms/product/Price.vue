@@ -15,8 +15,10 @@
         rounded-lg
         font-light
         text-xs
-        dark:border-white dark:border-opacity-30
-        dark:text-white dark:text-opacity-30
+        dark:border-white
+        dark:border-opacity-30
+        dark:text-white
+        dark:text-opacity-30
       "
     >
       Specify the cost

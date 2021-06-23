@@ -1,11 +1,12 @@
 <template>
   <nuxt-link :to="productUrl" :title="product.name" class="product-card">
-    <atoms-product-cover
+    <!-- <atoms-product-cover
       :product="product"
       :width="'500'"
       :height="'500'"
       :fit="'thumb'"
-    />
+    /> -->
+    <img :src="coverUrl" class="object-cover w-full" />
     <div class="p-4">
       <content-loader v-if="!product.name"></content-loader>
       <div class="font-bold">{{ product.name }}</div>
@@ -26,7 +27,19 @@
       </div>
       <atoms-product-econom-percent
         :product="product"
-        class="absolute top-0 right-0 my-2 px-3 py-1 text-xs md:text-base text-white rounded-l-md bg-red-600"
+        class="
+          absolute
+          top-0
+          right-0
+          my-2
+          px-3
+          py-1
+          text-xs
+          md:text-base
+          text-white
+          rounded-l-md
+          bg-red-600
+        "
       />
     </div>
   </nuxt-link>
@@ -44,6 +57,9 @@ export default {
   computed: {
     productUrl() {
       return '/p/' + this.product.slug + '/'
+    },
+    coverUrl() {
+      return this.product.variants[0]?.cover?.url
     },
   },
 }

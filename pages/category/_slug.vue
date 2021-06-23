@@ -32,11 +32,6 @@ import seo from '~/mixins/seo/page'
 export default {
   name: 'CategoryPage',
   mixins: [seo],
-  data() {
-    return {
-      leftSidebar: false,
-    }
-  },
   async asyncData({ $graphql, params }) {
     const { slug } = params
     const query = gql`
@@ -78,6 +73,11 @@ export default {
       slug,
     })
     return { pageData }
+  },
+  data() {
+    return {
+      leftSidebar: false,
+    }
   },
   computed: {
     page() {

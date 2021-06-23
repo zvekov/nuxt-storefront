@@ -58,7 +58,14 @@
       </div>
       <ClientOnly>
         <base-yandex-map
-          class="w-full shadow-pressDefault rounded-lg h-64 md:h-full dark:shadow-none"
+          class="
+            w-full
+            shadow-pressDefault
+            rounded-lg
+            h-64
+            md:h-full
+            dark:shadow-none
+          "
         />
       </ClientOnly>
     </div>

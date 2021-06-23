@@ -42,6 +42,8 @@ export default {
             price
             oldPrice
             cover {
+              url
+              previewUrl
               hash
             }
           }
