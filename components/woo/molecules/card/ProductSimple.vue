@@ -1,6 +1,11 @@
 <template>
   <div>
-    <woo-atoms-product-cover :product="product" />
+    <woo-atoms-product-cover
+      :product="product"
+      :width="'300'"
+      :height="'300'"
+      :fit="'fill'"
+    />
     <div class="p-4">
       <content-loader v-if="!product.name"></content-loader>
       <div class="font-bold">{{ product.name }}</div>

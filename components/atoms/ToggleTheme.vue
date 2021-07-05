@@ -23,10 +23,10 @@
         class="w-6 h-6 absolute"
         :class="$colorMode.preference === 'dark' ? 'show' : 'hide'"
       />
-      <!-- <system-icon
+      <system-icon
         class="w-6 h-6 absolute"
         :class="$colorMode.preference === 'system' ? 'show' : 'hide'"
-      /> -->
+      />
       <sun-icon
         class="w-6 h-6 absolute"
         :class="$colorMode.preference === 'light' ? 'show' : 'hide'"
@@ -61,30 +61,30 @@
 <script>
 import SunIcon from '~/assets/icons/sun.svg?inline'
 import MoonIcon from '~/assets/icons/moon.svg?inline'
-// import SystemIcon from '~/assets/icons/system.svg?inline'
+import SystemIcon from '~/assets/icons/system.svg?inline'
 export default {
   components: {
     SunIcon,
     MoonIcon,
-    // SystemIcon,
+    SystemIcon,
   },
   methods: {
-    setCurrentTheme() {
-      this.$colorMode.preference =
-        this.$colorMode.preference === 'light'
-          ? 'dark'
-          : this.$colorMode.preference === 'dark'
-          ? 'light'
-          : 'dark'
-    },
     // setCurrentTheme() {
     //   this.$colorMode.preference =
-    //     this.$colorMode.preference === 'system'
-    //       ? 'light'
-    //       : this.$colorMode.preference === 'light'
+    //     this.$colorMode.preference === 'light'
     //       ? 'dark'
-    //       : 'system'
+    //       : this.$colorMode.preference === 'dark'
+    //       ? 'light'
+    //       : 'dark'
     // },
+    setCurrentTheme() {
+      this.$colorMode.preference =
+        this.$colorMode.preference === 'system'
+          ? 'light'
+          : this.$colorMode.preference === 'light'
+          ? 'dark'
+          : 'system'
+    },
   },
 }
 </script>

@@ -2,6 +2,7 @@
   <div class="cover">
     <atoms-content-loader v-if="!productCover"></atoms-content-loader>
     <nuxt-img
+      v-if="productCover"
       provider="cloudinary"
       :src="productCover"
       :width="width"

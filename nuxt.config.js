@@ -20,6 +20,7 @@ export default {
   },
   privateRuntimeConfig: {
     apiUrl: apiUrl || 'http://localhost:1337',
+    wooUrl,
   },
   head: {
     title: 'Nuxt Storefront',
@@ -47,7 +48,6 @@ export default {
     '@nuxtjs/device',
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/ngrok',
     'nuxt-font-loader',
     'nuxt-graphql-request',
   ],
@@ -113,11 +113,6 @@ export default {
       theme_color: '#000000',
     },
   },
-  ngrok: {
-    authtoken: process.env.NGROK_AUTHTOKEN,
-    auth: 'dev:dev',
-    region: 'eu',
-  },
   build: {
     publicPath: '/assets/',
     extractCSS: true,
@@ -176,8 +171,14 @@ export default {
     extendRoutes(routes, resolve) {
       const routesToAdd = [
         {
+          name: 'woo-product-slug',
+          path: '/woo/p/:slug',
+          component: resolve(__dirname, 'pages/woo/product/_slug.vue'),
+          chunkName: 'pages/woo/product/_slug',
+        },
+        {
           name: 'product-slug',
-          path: '/p/:slug',
+          path: '/:slug',
           component: resolve(__dirname, 'pages/product/_slug.vue'),
           chunkName: 'pages/product/_slug',
         },

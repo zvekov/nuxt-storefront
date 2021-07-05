@@ -5,8 +5,7 @@
       border-b border-opacity-10
       md:border-none
       mb-1
-      md:mb-6
-      md:relative
+      md:mb-6 md:relative
       z-40
       transition-all
       duration-200
@@ -33,12 +32,10 @@
             class="
               base-logo
               px-2
-              md:px-0
-              md:mt-0
+              md:px-0 md:mt-0
               w-full
               mx-auto
-              md:w-56
-              md:mx-auto
+              md:w-56 md:mx-auto
             "
           />
         </div>
@@ -165,7 +162,22 @@
       class="hidden md:block"
       style="height: 40px"
     > -->
-    <part-nav
+    <!-- <part-nav
+      class="
+        hidden
+        shadow-pressDefault
+        py-2
+        bg-white
+        dark:bg-black
+        md:flex
+        justify-center
+        z-0
+        dark:border-t
+        border-white border-opacity-10
+        dark:shadow-none
+      "
+    /> -->
+    <woo-organisms-navigation
       class="
         hidden
         shadow-pressDefault

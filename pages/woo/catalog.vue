@@ -30,7 +30,7 @@ export default {
   async asyncData({ $graphql }) {
     const query = gql`
       query allProducts {
-        products {
+        products(first: 52) {
           edges {
             node {
               id
@@ -51,7 +51,7 @@ export default {
                 stockQuantity
               }
               image {
-                sourceUrl(size: SHOP_CATALOG)
+                mediaItemUrl
               }
               productCategories(last: 1) {
                 edges {

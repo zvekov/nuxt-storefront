@@ -2,7 +2,7 @@
   <div class="product-page relative inner w-full">
     <div class="w-auto px-3 mb-4 flex items-center justify-between h-6">
       <atoms-link-back
-        v-if="product.baseCategory"
+        v-if="baseCategory"
         :link-to="linkBackUrl"
         :link-name="linkBackName"
       />
@@ -29,7 +29,7 @@
           md:order-1 md:my-0
         "
       >
-        <atoms-product-cover
+        <woo-atoms-product-cover
           :product="product"
           :width="'600'"
           :height="'600'"
@@ -73,16 +73,18 @@
           md:order-3
         "
       >
-        <!-- <template v-if="pageContent">
-          <VueMarkdown :source="pageContent" class="product-content" />
-        </template> -->
+        <template v-if="product.shortDescription">
+          <div class="product-content">
+            {{ product.shortDescription }}
+          </div>
+        </template>
         <!-- <div>
             Размеры: 
 
           </div> -->
 
         <!-- Create custom component CollectionList -->
-        <div v-if="product.collections.length > 0" class="flex flex-wrap pt-3">
+        <!-- <div v-if="product.collections.length > 0" class="flex flex-wrap pt-3">
           <div
             v-for="collection in product.collections"
             :key="collection.id"
@@ -103,7 +105,7 @@
               {{ collection.name }}
             </nuxt-link>
           </div>
-        </div>
+        </div> -->
         <!-- Create custom component CollectionList -->
       </div>
       <div
@@ -131,24 +133,39 @@
             dark:border-white dark:border-opacity-10 dark:shadow-none
           "
         >
-          <!-- <span
-            v-if="$page.page.oldPrice"
-            class="absolute top-0 right-0 flex px-2 py-1 mr-2 -mt-2 text-sm font-bold text-white bg-red-600 rounded-md md:-mr-2"
+          <span
+            v-if="product.onSale"
+            class="
+              absolute
+              top-0
+              right-0
+              flex
+              px-2
+              py-1
+              mr-2
+              -mt-2
+              text-sm
+              font-bold
+              text-white
+              bg-red-600
+              rounded-md
+              md:-mr-2
+            "
           >
-            Экономия:
-            <ProductEconomSum
-              :product="$page.page"
+            You save:
+            <!-- <ProductEconomSum
               :key="$page.page.id"
+              :product="$page.page"
               class="pl-1"
-            />
-          </span> -->
-          <atoms-product-sku v-if="sku" :sku="sku" class="text-xs" />
+            /> -->
+          </span>
+          <woo-atoms-product-sku :sku="sku" class="text-xs" />
           <div class="flex items-center pt-2">
-            <atoms-product-price
+            <woo-atoms-product-price
               :product="product"
               class="text-lg font-extrabold"
             />
-            <atoms-product-old-price
+            <woo-atoms-product-regular-price
               :product="product"
               class="pl-2 text-xs line-through opacity-50"
             />
@@ -157,13 +174,13 @@
           <!-- <div v-for="variant in product.variants" :key="variant.id">
             {{ variant }}
           </div> -->
-          <atoms-product-add-to-cart
+          <!-- <woo-atoms-product-add-to-cart
             v-if="!$device.isMobile"
             class="mt-4 w-auto py-1"
             :product="product"
-          />
+          /> -->
         </div>
-        <molecules-card-brand class="brand" :brand="product.brand" />
+        <!-- <molecules-card-brand class="brand" :brand="product.brand" /> -->
       </div>
       <div class="order-4 col-span-12 md:col-span-9">
         <!-- <div v-if="$page.page.media.length > 0" class="py-8">
@@ -203,112 +220,107 @@
         />
       </div>
     </div> -->
-    <molecules-product-action-mobile
+    <!-- <molecules-product-action-mobile
       v-if="$device.isMobile"
       :product="product"
-    />
+    /> -->
   </div>
 </template>
 <script>
 import { gql } from 'nuxt-graphql-request'
-import seo from '~/mixins/seo/product'
+// import seo from '~/mixins/seo/product'
 export default {
   name: 'ProductPage',
-  mixins: [seo],
+  // mixins: [seo],
+  components: {},
   async asyncData({ $graphql, params }) {
     const { slug } = params
+    // const query = gql`
+    //   query GetPProductBySlug($slug: String!) {
+    //     products(where: { slug: $slug }) {
+    //       edges {
+    //         node {
+    //           id
+    //           slug
+    //           name
+    //         }
+    //       }
+    //     }
+    //   }
+    // `
     const query = gql`
-      query GetPageBySlug($slug: String!) {
-        products(where: { slug: $slug }) {
+      query GetProduct($slug: ID!) {
+        product(id: $slug, idType: SLUG) {
           id
           slug
           name
-          baseCategory {
-            id
-            slug
-            name
+          sku
+          onSale
+          type
+          image {
+            mediaItemUrl
           }
-          variants {
+          shortDescription(format: RAW)
+          ... on SimpleProduct {
             id
-            price
-            oldPrice
-            data {
-              sku
-            }
-            options {
-              product_option {
+            price(format: FORMATTED)
+            regularPrice(format: FORMATTED)
+            stockStatus
+            stockQuantity
+          }
+          productCategories(last: 1) {
+            edges {
+              node {
                 name
-              }
-              product_option_value {
-                value
+                slug
               }
             }
-            cover {
-              hash
-            }
-          }
-          collections {
-            id
-            name
-            slug
-          }
-          brand {
-            id
-            name
-            slug
-            iconSvg
-            iconImg {
-              hash
-            }
-          }
-          seo {
-            h1
-            title
-            description
           }
         }
       }
     `
-    const page = await $graphql.default.request(query, {
+    const page = await $graphql.wooApi.request(query, {
       slug,
     })
     return { page }
   },
   computed: {
     product() {
-      return this.page?.products[0]
+      return this.page?.product
     },
     sku() {
-      return this.product.variants[0]?.data?.sku
+      return this.product?.sku
     },
     h1() {
-      return this.product.seo?.h1 || this.product.name
+      return this.product?.name
     },
-    metaTitle() {
-      return this.product.seo?.title || this.product.name
-    },
-    metaDescription() {
-      return this.product.seo?.description || this.product.name
+    // metaTitle() {
+    //   return this.product.seo?.title || this.product.name
+    // },
+    // metaDescription() {
+    //   return this.product.seo?.description || this.product.name
+    // },
+    baseCategory() {
+      return this.product.productCategories?.edges[0]
     },
     linkBackName() {
-      return this.product.baseCategory?.name
+      return this.baseCategory.node?.name
     },
     linkBackUrl() {
       return (
-        this.product.baseCategory &&
-        '/c/' + this.product.baseCategory.slug + '/'
+        this.baseCategory?.node && '/woo/c/' + this.baseCategory?.slug + '/'
       )
     },
   },
-  methods: {
-    onError(err) {
-      alert(err)
-      console.log(err)
-    },
-    onSuccess(err) {
-      console.log(err)
-    },
-  },
+  // methods: {
+  //   onError(err) {
+  //     alert(err)
+  //     console.log(err)
+  //   },
+  //   onSuccess(err) {
+  //     console.log(err)
+  //   },
+  // },
 }
 </script>
 <style lang="postcss">
