@@ -55,7 +55,7 @@ export default {
   },
   computed: {
     productUrl() {
-      return '/' + this.product.slug + '/'
+      return '/p/' + this.product.slug + '/'
     },
     coverUrl() {
       return this.product.variants[0]?.cover?.url

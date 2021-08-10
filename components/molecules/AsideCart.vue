@@ -31,7 +31,12 @@
           >{{ cartQty }}</span
         >
       </div>
-      <button
+      <atoms-btn-close
+        class="absolute right-0 top-0 bottom-0 mr-4 my-auto"
+        :bg="true"
+        @close="hideAsideCart"
+      />
+      <!-- <button
         class="absolute right-0 top-0 bottom-0 mr-4"
         @click="hideAsideCart"
       >
@@ -46,7 +51,7 @@
             dark:text-white dark:text-opacity-50
           "
         />
-      </button>
+      </button> -->
     </div>
     <div v-if="cartQty < 1" class="px-8 py-4 mt-16 flex flex-col items-center">
       <boredSvg class="h-32" />

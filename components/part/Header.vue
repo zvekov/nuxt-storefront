@@ -12,15 +12,15 @@
     "
   >
     <transition name="fade">
-      <molecules-ads-header
-        v-if="isAdsHeader"
-        ref="adsHeader"
-        @clickToCloseAdsHeader="hideAdsHeader"
+      <molecules-message-header
+        v-if="isMessageHeader"
+        ref="messageHeader"
+        @clickToCloseMessageHeader="hideMessageHeader"
       />
     </transition>
     <transition name="fade">
       <div
-        :class="isAdsHeader ? 'mt-16 md:mt-10' : 'mt-0'"
+        :class="isMessageHeader ? 'mt-16 md:mt-10' : 'mt-0'"
         class="inner py-4 md:py-6 flex items-center w-full justify-between h-16"
       >
         <div class="w-2/12 md:w-3/12 z-0">
@@ -42,7 +42,7 @@
         <div class="w-2/12 md:w-3/12 px-3 flex justify-end z-50">
           <!-- <div
           :class="{ 'is-active': searchResults.length }"
-          class="search-form flex" 
+          class="search-form flex"
         >-->
           <!-- <div
             class="w-full absolute right-0 left-0 z-10 inner h-8 px-5"
@@ -190,6 +190,7 @@
         dark:border-t
         border-white border-opacity-10
         dark:shadow-none
+        h-10
       "
     />
     <!-- </headroom> -->
@@ -198,7 +199,7 @@
 
 <script>
 import WishlistIcon from '~/assets/icons/wishlist.svg?inline'
-import CartIcon from '~/assets/icons/cart.svg?inline'
+// import CartIcon from '~/assets/icons/cart.svg?inline'
 import AccountIcon from '~/assets/icons/account.svg?inline'
 // import Burger from "~/components/molecules/header/burger/Burger";
 // import { headroom } from "vue-headroom";
@@ -214,7 +215,7 @@ export default {
   components: {
     AccountIcon,
     WishlistIcon,
-    CartIcon,
+    // CartIcon,
     //     Burger,
     //     headroom,
     // SearchIcon,
@@ -224,7 +225,7 @@ export default {
   },
   data() {
     return {
-      isAdsHeader: true,
+      isMessageHeader: true,
     }
   },
   //   computed: {
@@ -291,8 +292,8 @@ export default {
   //     this.popupItem = this.$el;
   //   },
   methods: {
-    hideAdsHeader() {
-      this.isAdsHeader = false
+    hideMessageHeader() {
+      this.isMessageHeader = false
     },
     // showAsideCart() {
     //   this.$nuxt.$emit('showAsideCart')

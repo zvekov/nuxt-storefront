@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     productUrl() {
-      return '/woo/p/' + this.product.slug + '/'
+      return '/woo/product/' + this.product.slug + '/'
     },
   },
 }

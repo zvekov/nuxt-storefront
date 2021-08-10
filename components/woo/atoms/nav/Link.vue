@@ -1,6 +1,7 @@
 <template>
-  <span v-if="navItem">
-    <nuxt-link :to="navItem.path" :title="navItem.label" class="px-5">
+  <span>
+    <atoms-content-loader v-if="!navItem" :width="100" :height="50" />
+    <nuxt-link v-else :to="navItem.path" :title="navItem.label" class="px-5">
       {{ navItem.label }}
     </nuxt-link>
     <!-- {{ navItem }} -->

@@ -5,8 +5,7 @@
       border-b border-opacity-10
       md:border-none
       mb-1
-      md:mb-6
-      md:relative
+      md:mb-6 md:relative
       z-40
       transition-all
       duration-200
@@ -31,19 +30,17 @@
             class="
               base-logo
               px-2
-              md:px-0
-              md:mt-0
+              md:px-0 md:mt-0
               w-full
               mx-auto
-              md:w-56
-              md:mx-auto
+              md:w-56 md:mx-auto
             "
           />
         </div>
         <div class="w-2/12 md:w-3/12 px-3 flex justify-end z-50">
           <!-- <div
           :class="{ 'is-active': searchResults.length }"
-          class="search-form flex" 
+          class="search-form flex"
         >-->
           <!-- <div
             class="w-full absolute right-0 left-0 z-10 inner h-8 px-5"

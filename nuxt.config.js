@@ -41,9 +41,7 @@ export default {
   plugins: ['@/plugins/yandex-map.client.js'],
 
   components: true,
-
   buildModules: [
-    '@nuxt/image',
     '@nuxtjs/color-mode',
     '@nuxtjs/device',
     '@nuxt/typescript-build',
@@ -52,10 +50,21 @@ export default {
     'nuxt-graphql-request',
   ],
 
-  modules: ['@nuxtjs/strapi', '@nuxtjs/axios', '@nuxtjs/pwa', '@nuxtjs/svg'],
+  modules: [
+    '@nuxt/image',
+    '@nuxtjs/strapi',
+    '@nuxtjs/axios',
+    '@nuxtjs/pwa',
+    '@nuxtjs/svg',
+  ],
 
   axios: {},
-
+  gsap: {
+    clubPlugins: {
+      morphSVG: true,
+      motionPathHelper: true,
+    },
+  },
   graphql: {
     clients: {
       default: {
@@ -83,7 +92,6 @@ export default {
     key: 'userJwt',
   },
   tailwindcss: {
-    jit: true,
     exposeConfig: true,
   },
   colorMode: {
@@ -114,6 +122,11 @@ export default {
     },
   },
   build: {
+    babel: {
+      plugins: [
+        ['@babel/plugin-proposal-private-property-in-object', { loose: true }],
+      ],
+    },
     publicPath: '/assets/',
     extractCSS: true,
     // parallel: true,
@@ -178,7 +191,7 @@ export default {
         },
         {
           name: 'product-slug',
-          path: '/:slug',
+          path: '/p/:slug',
           component: resolve(__dirname, 'pages/product/_slug.vue'),
           chunkName: 'pages/product/_slug',
         },

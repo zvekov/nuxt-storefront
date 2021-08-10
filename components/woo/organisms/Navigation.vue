@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="navigationItems">
+  <nav>
     <ul v-for="item in navigationItems" :key="item.id">
       <li>
         <woo-atoms-nav-link :id="item.node.id" />
