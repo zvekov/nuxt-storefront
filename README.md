@@ -1,4 +1,5 @@
 # Nuxt Storefront
+[![wakatime](https://wakatime.com/badge/github/zvekov/nuxt-storefront.svg)](https://wakatime.com/badge/github/zvekov/nuxt-storefront)
 
 ## Build Setup
 
